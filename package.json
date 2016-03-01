@@ -8,7 +8,8 @@
   "activationCommands": {
     "atom-workspace": [
       "generate:toggle",
-      "generate:ascii_art"
+      "generate:ascii_art",
+      "generate:java_model"
       ]
   },
   "repository": "https://github.com/atom/generate",

@@ -1,6 +1,9 @@
 GenerateView = require './generate-view'
 {CompositeDisposable} = require 'atom'
 
+Java = require './java'
+java = new Java()
+
 module.exports = Generate =
   generateView: null
   modalPanel: null
@@ -14,8 +17,11 @@ module.exports = Generate =
     @subscriptions = new CompositeDisposable
 
     # Register command that toggles this view
-    @subscriptions.add atom.commands.add 'atom-workspace', 'generate:toggle': => @toggle()
-    @subscriptions.add atom.commands.add 'atom-workspace', 'generate:ascii_art': => @ascii_art()
+    @subscriptions.add atom.commands.add 'atom-workspace',
+      'generate:toggle': => @toggle()
+      'generate:ascii_art': => @ascii_art()
+      'generate:java_model': => @gen java.showHello
+
 
   deactivate: ->
     @modalPanel.destroy()
@@ -44,3 +50,16 @@ module.exports = Generate =
           console.error error
         else
           editor.insertText "\n#{art}\n"
+  gen: (method) ->
+    if editor = atom.workspace.getActiveTextEditor()
+      selection = editor.getSelectedText()
+      editor.insertText method(selection)
+
+    # if (editor?)
+    #   selections = editor.getSelections()
+    #   sel.insertText(t(sel.getText()), { "select": true}) for sel in selections
+      # method selection,(error,art) ->
+      #   if error
+      #     console.error error
+      #   else
+      #     editor.insertText "\n#{art}\n"

@@ -14,17 +14,28 @@
   {
     'label': 'Generate'
     'submenu': [
-      'label': 'generate'
-      'submenu': [
-        {
-          'label': 'Toggle'
-          'command': 'generate:toggle'
-        }
-        {
-          'label': 'asciiArt'
-          'command': 'generate:ascii_art'
-        }
-      ]
+      {
+        'label': 'generate'
+        'submenu': [
+          {
+            'label': 'Toggle'
+            'command': 'generate:toggle'
+          }
+          {
+            'label': 'asciiArt'
+            'command': 'generate:ascii_art'
+          }
+        ]
+      }
+      {
+        'label':'java code'
+        'submenu': [
+          {
+            'label':'hello'
+            'command': 'generate:java_model'
+          }
+        ]
+      }
     ]
   }
 ]

@@ -15,7 +15,7 @@ module.exports = Generate =
 
     # Register command that toggles this view
     @subscriptions.add atom.commands.add 'atom-workspace', 'generate:toggle': => @toggle()
-    @subscriptions.add atom.commands.add 'atom-workspace', 'generate:alert1': => @alert1()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'generate:ascii_art': => @ascii_art()
 
   deactivate: ->
     @modalPanel.destroy()
@@ -34,5 +34,13 @@ module.exports = Generate =
       @modalPanel.show()
 
 
-  alert1: ->
-    alert "asdfdfdf"
+  ascii_art: ->
+    if editor = atom.workspace.getActiveTextEditor()
+      selection = editor.getSelectedText()
+      figlet = require 'figlet'
+      font = "o8"
+      figlet selection,{font:font},(error,art) ->
+        if error
+          console.error error
+        else
+          editor.insertText "\n#{art}\n"

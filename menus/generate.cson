@@ -5,6 +5,10 @@
       'label': 'Toggle generate'
       'command': 'generate:toggle'
     }
+    {
+      'label': 'Toggle asciiArt'
+      'command': 'generate:ascii_art'
+    }
   ]
 'menu': [
   {
@@ -15,9 +19,10 @@
         {
           'label': 'Toggle'
           'command': 'generate:toggle'
-        },{
-          'label': 'Alert'
-          'command': 'generate:alert1'
+        }
+        {
+          'label': 'asciiArt'
+          'command': 'generate:ascii_art'
         }
       ]
     ]

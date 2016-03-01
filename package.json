@@ -6,7 +6,10 @@
   "keywords": [
   ],
   "activationCommands": {
-    "atom-workspace": "generate:toggle"
+    "atom-workspace": [
+      "generate:toggle",
+      "generate:ascii_art"
+      ]
   },
   "repository": "https://github.com/atom/generate",
   "license": "MIT",
@@ -14,5 +17,6 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
+    "figlet": "1.1.1"
   }
 }

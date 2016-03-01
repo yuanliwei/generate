@@ -1,0 +1,25 @@
+# See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
+'context-menu':
+  'atom-text-editor': [
+    {
+      'label': 'Toggle generate'
+      'command': 'generate:toggle'
+    }
+  ]
+'menu': [
+  {
+    'label': 'Generate'
+    'submenu': [
+      'label': 'generate'
+      'submenu': [
+        {
+          'label': 'Toggle'
+          'command': 'generate:toggle'
+        },{
+          'label': 'Alert'
+          'command': 'generate:alert1'
+        }
+      ]
+    ]
+  }
+]

@@ -33,20 +33,51 @@
   formatJSONVarName = (item) ->
     item.replace /([A-Z])/g, (match) ->
       match.toLowerCase() + '_'
-    # public static String formatJSONVarName(String varName) {
-    #     varName = lowerBegin(varName);
-    #     StringBuilder s1 = new StringBuilder();
-    #     for (int i = 0; i < varName.length(); i++) {
-    #         char c = varName.charAt(i);
-    #         if (c >= 'A' && c <= 'Z') {
-    #             s1.append("_" + (char) (c + ('a' - 'A')));
-    #         } else {
-    #             s1.append(c);
-    #         }
-    #     }
-    #     return s1.toString();
-    # }
+
+  format = () ->
+    args = arguments
+    console.log args
+    item = args[0]
+    # options=args.slice 1,3
+    console.log item
+    # console.log options
+    console.log args.slice
+    # console.log args.slice
+  #  public static String format(String str, int... option) {
+  #       String tem = str;
+  #       for (int i = 0; i < option.length; i++) {
+  #           switch (option[i]) {
+  #               case 0:
+  #                   tem = upperBegin(tem);
+  #                   break;
+  #               case 1:
+  #                   tem = lowerBegin(tem);
+  #                   break;
+  #               case 2:
+  #                   tem = formatJavaVarName(tem);
+  #                   break;
+  #               case 3:
+  #                   tem = formatJSONVarName(tem);
+  #                   break;
+  #               case 4:
+  #                   tem = formatJSONVarName(tem);
+  #                   break;
+  #               case 5:
+  #                   tem = formatJavaType(tem);
+  #                   break;
+  #               case 6:
+  #                   tem = formatDbType(tem);
+  #                   break;
+   #
+  #               default:
+  #                   throw new IllegalArgumentException("error : " + option[i] + " illegal argument");
+  #           }
+  #       }
+  #       return tem;
+   #
+  #   }
+  #
   console.log "hello"
 
   name = "asFhdYin"
-  formatJSONVarName name
+  format name,1,3,4

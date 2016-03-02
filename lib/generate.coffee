@@ -3,6 +3,8 @@ GenerateView = require './generate-view'
 
 Java = require './java'
 java = new Java()
+StringUtil = require './string-util'
+stringUtil = new StringUtil()
 
 module.exports = Generate =
   generateView: null
@@ -21,6 +23,7 @@ module.exports = Generate =
       'generate:toggle': => @toggle()
       'generate:ascii_art': => @ascii_art()
       'generate:java_model': => @gen java.showHello
+      'generate:java_format': => stringUtil.format "asFhdYin",1,3,4
 
 
   deactivate: ->

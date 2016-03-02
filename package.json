@@ -9,7 +9,8 @@
     "atom-workspace": [
       "generate:toggle",
       "generate:ascii_art",
-      "generate:java_model"
+      "generate:java_model",
+      "generate:java_format"
       ]
   },
   "repository": "https://github.com/atom/generate",

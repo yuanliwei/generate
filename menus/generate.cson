@@ -1,4 +1,6 @@
 # See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
+
+# 右键菜单
 'context-menu':
   'atom-text-editor': [
     {
@@ -10,6 +12,8 @@
       'command': 'generate:ascii_art'
     }
   ]
+
+  # 标准菜单
 'menu': [
   {
     'label': 'Generate'
@@ -33,6 +37,10 @@
           {
             'label':'hello'
             'command': 'generate:java_model'
+          }
+          {
+            'label': 'format'
+            'command': 'generate:java_format'
           }
         ]
       }

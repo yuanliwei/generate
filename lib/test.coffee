@@ -1,9 +1,11 @@
-# StringUtil = require "./string-util.coffee"
-process.chdir 'C:\\Users\\y\\github\\generate\\lib\\'
-console.log process.cwd()
+basePath = 'C:/Users/y/github/generate/lib'
+basePath = 'C:/Users/up366pc1.hxtt-pc1/.atom/packages/generate/lib'
 
-a = require 'C:\\Users\\y\\github\\generate\\lib/string-util'
-stringUtil = new a()
+# StringUtil = require "./string-util"
+# process.chdir "#{basePath}"
+# console.log process.cwd()
+
+stringUtil = require "#{basePath}/string-util-s"
 
 name = "asFhdYin"
 stringUtil.format name,1,3,4

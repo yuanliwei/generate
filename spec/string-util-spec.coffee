@@ -2,6 +2,7 @@ StringUtil = require '../lib/string-util'
 stringUtil = new StringUtil()
 
 describe 'StringUtil test', ->
+  # it ""
   it "test format method", ->
     # gh_uji_kfg -> GhUjiKfg
     result = stringUtil.format "gh_uji_kfg",2,0

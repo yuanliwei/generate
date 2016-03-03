@@ -1,10 +1,9 @@
-basePath = 'C:/Users/y/github/generate/lib'
-basePath = 'C:/Users/up366pc1.hxtt-pc1/.atom/packages/generate/lib'
+cp = atom.packages.getLoadedPackage('generate').getMainModulePath()
+basePath = cp.substr 0,(cp.lastIndexOf('generate.coffee') - 1)
+console.log basePath
 
-# StringUtil = require "./string-util"
-# process.chdir "#{basePath}"
-# console.log process.cwd()
-
+################################################################
+ 
 stringUtil = require "#{basePath}/string-util-s"
 
 name = "asFhdYin"

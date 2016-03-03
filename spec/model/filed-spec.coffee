@@ -6,6 +6,24 @@ describe 'Model Filed test', ->
     buffer = [];
     source = filed.toSource buffer
     expect(buffer.join('\\n')).toBe 'private String name = "ylw"; // name string'
+    # setter
+    setter = """
+      public void setName(String name) {
+        this.name = name;
+      }
+    """
+    buffer = [];
+    source = filed.toSetter buffer
+    expect(buffer.join('\\n')).toBe setter
+    # getter
+    getter = """
+      public String getName() {
+        return this.name;
+      }
+    """
+    buffer = [];
+    source = filed.toGetter buffer
+    expect(buffer.join('\\n')).toBe getter
 
     filed = new Filed('String','name','ylw')
     buffer = [];

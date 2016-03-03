@@ -39,3 +39,29 @@ describe 'Model Filed test', ->
     buffer = [];
     source = filed.toSource buffer
     expect(buffer.join('\\n')).toBe 'private float age = 14;'
+
+    filed = new Filed()
+    source = 'private String name = "ylw"; // this is comment'
+    filed.fromSource source
+    buffer = [];
+    source = filed.toSource buffer
+    expect(buffer.join('\\n')).toBe 'private String name = "ylw"; // this is comment'
+
+    # setter
+    setter = """
+      public void setName(String name) {
+        this.name = name;
+      }
+    """
+    buffer = [];
+    source = filed.toSetter buffer
+    expect(buffer.join('\\n')).toBe setter
+    # getter
+    getter = """
+      public String getName() {
+        return this.name;
+      }
+    """
+    buffer = [];
+    source = filed.toGetter buffer
+    expect(buffer.join('\\n')).toBe getter

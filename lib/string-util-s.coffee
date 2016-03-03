@@ -70,3 +70,10 @@ exports.native2ascii = (native_) ->
     else
       ascii += chars[i]
   ascii
+
+exports.formatStr = () ->
+  args = arguments
+  item = args[0]
+  item.replace /{(\d+)}/g, (match,num) ->
+    i = parseInt(num) + 1
+    if typeof args[i] != 'undefined' then args[i] else match

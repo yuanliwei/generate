@@ -59,3 +59,7 @@ describe 'StringUtil test', ->
   it "test native2ascii method", ->
     expect(StringUtil.native2ascii '这是一个例子,this is a example').toBe '\\u8fd9\\u662f\\u4e00\\u4e2a\\u4f8b\\u5b50,this is a example'
     expect(StringUtil.native2ascii 'is 是的a e是的xa方法mple').toBe 'is \\u662f\\u7684a e\\u662f\\u7684xa\\u65b9\\u6cd5mple'
+
+  it "test formatStr method", ->
+    str = "hello {0} bye {1} , {1} hahaha {2}"
+    expect(StringUtil.formatStr str,'p0','p1','p2').toBe 'hello p0 bye p1 , p1 hahaha p2'

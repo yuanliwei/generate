@@ -4,11 +4,14 @@ console.log basePath
 
 ################################################################
 
-stringUtil = require "#{basePath}/string-util-s"
+StringUtil = require "#{basePath}/string-util-s"
 
 name = "asFhdYin"
-stringUtil.format name,1,3,4
+StringUtil.format name,1,3,4
 # hello kkk
+
+str = "hello {0} bye {1} , {1} hahaha {2}"
+console.log StringUtil.formatStr str,'p0','p1','p2'
 
 Filed = require "#{basePath}/model/filed"
 filed = new Filed('String','name','ylw','name string')

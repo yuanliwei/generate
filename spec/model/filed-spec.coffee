@@ -5,14 +5,19 @@ describe 'Model Filed test', ->
     filed = new Filed('String','name','ylw','name string')
     buffer = [];
     source = filed.toSource buffer
-    expect(buffer.join('')).toBe 'private String name = ylw; // name string '
+    expect(buffer.join('\\n')).toBe 'private String name = "ylw"; // name string'
 
     filed = new Filed('String','name','ylw')
     buffer = [];
     source = filed.toSource buffer
-    expect(buffer.join('')).toBe 'private String name = ylw;'
+    expect(buffer.join('\\n')).toBe 'private String name = "ylw";'
 
     filed = new Filed('String','name')
     buffer = [];
     source = filed.toSource buffer
-    expect(buffer.join('')).toBe 'private String name ;'
+    expect(buffer.join('\\n')).toBe 'private String name;'
+
+    filed = new Filed('float','age',14)
+    buffer = [];
+    source = filed.toSource buffer
+    expect(buffer.join('\\n')).toBe 'private float age = 14;'

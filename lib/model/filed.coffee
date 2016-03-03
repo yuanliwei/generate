@@ -20,7 +20,7 @@ module.exports = class Filed
     i = source.indexOf('=')
     if i > 3
       @value = source.split('=')[1]
-      @value = @value.replace /[\\"|\\s|;]/g,''
+      @value = @value.replace /[\\"|\\s|;| ]/g,''
       source = source.substr(0, i).trim();
 
   ###

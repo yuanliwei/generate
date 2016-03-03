@@ -6,7 +6,6 @@ exports.lowerBegin = (item) ->
     item.replace /(\w)/,(match) ->
       match.toLowerCase()
 
-
 exports.formatJavaType = (item) ->
     switch item
       when 'char' then 'String'

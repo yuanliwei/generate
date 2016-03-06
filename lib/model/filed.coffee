@@ -1,17 +1,5 @@
 StringUtil = require '../string-util-s'
-
-exports.modifiers = modifiers = {
-    0x01:'private'
-    0x02:'public'
-    0x04:'protect'
-    0x08:'final'
-    0x10:'static'
-    'private' : 0x01
-    'public' : 0x02
-    'protect' : 0x04
-    'final' : 0x08
-    'static' : 0x10
-  }
+Modifiers = require './modifiers'
 
 module.exports = class Filed
 
@@ -24,7 +12,7 @@ module.exports = class Filed
   0x08:final
   0x10:static
   ###
-  modifier: modifiers.private
+  modifier: Modifiers.private
   type: 'String'
   constructor: (type, @name, @value, @comment) ->
     @type = type || @type
@@ -54,8 +42,8 @@ module.exports = class Filed
     thiz = @
     items = source.split /\s+/g
     items.forEach (item) ->
-      if item of modifiers
-        value = modifiers[item]
+      if item of Modifiers
+        value = Modifiers[item]
         thiz.modifier += value
       else if not thiz.type
         thiz.type = item
@@ -109,8 +97,8 @@ module.exports = class Filed
 
   getModifier: () ->
     modifier = ''
-    for key of modifiers
-      modifier += modifiers[key] if(parseInt(key) & @modifier > 0)
+    for key of Modifiers
+      modifier += Modifiers[key] if(parseInt(key) & @modifier > 0)
     modifier
 
   toString: ->

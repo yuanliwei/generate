@@ -63,3 +63,12 @@ describe 'StringUtil test', ->
   it "test formatStr method", ->
     str = "hello {0} bye {1} , {1} hahaha {2}"
     expect(StringUtil.formatStr str,'p0','p1','p2').toBe 'hello p0 bye p1 , p1 hahaha p2'
+
+  it "test string-format lib", ->
+    format = require 'string-format'
+    expect(format 'hello {}','Alice').toBe 'hello Alice'
+
+  it "test string-format lib format.extend()", ->
+    format = require 'string-format'
+    format.extend(String.prototype, {})
+    expect('name:{0} age:{1}'.format('ylw',12)).toBe 'name:ylw age:12'

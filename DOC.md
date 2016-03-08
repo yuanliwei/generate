@@ -20,6 +20,8 @@
 ## [string-format](https://github.com/davidchambers/string-format):
 - 字符串模板
 
+## [cheerio](https://github.com/cheeriojs/cheerio)
+- Tiny, fast, and elegant implementation of core jQuery designed specifically for the server
 -----------------------
 
 # Others

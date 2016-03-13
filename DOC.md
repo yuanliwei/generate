@@ -10,6 +10,7 @@
 ##
 -----------------------
 # Node.js库
+## [国内优秀npm镜像推荐及使用](http://riny.net/2014/cnpm/)
 ## [Ramda](http://ramdajs.com/docs/):
 - ramdajs是一个更具有函数式代表的JavaScript库。
 - [JavaScript函数编程-Ramdajs](http://www.cnblogs.com/whitewolf/p/javascript-functional-programming-Ramdajs.html)   
@@ -22,6 +23,9 @@
 
 ## [cheerio](https://github.com/cheeriojs/cheerio)
 - Tiny, fast, and elegant implementation of core jQuery designed specifically for the server
+
+## [lowdb](https://github.com/typicode/lowdb)
+- Need a quick way to get a local database for a CLI, an Electron app, a small server or the browser?
 -----------------------
 
 # Others

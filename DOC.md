@@ -26,6 +26,9 @@
 
 ## [lowdb](https://github.com/typicode/lowdb)
 - Need a quick way to get a local database for a CLI, an Electron app, a small server or the browser?
+
+## [Request](https://github.com/request/request)
+- Request - Simplified HTTP client
 -----------------------
 
 # Others

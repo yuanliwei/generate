@@ -96,10 +96,10 @@ module.exports = class Filed
     if not @comment then "" else " // #{@comment}"
 
   getModifier: () ->
-    modifier = ''
+    mdf = []
     for key of Modifiers
-      modifier += Modifiers[key] if(parseInt(key) & @modifier > 0)
-    modifier
+      mdf.push Modifiers[key] if((parseInt(key) & @modifier) > 0)
+    mdf.join(' ')
 
   toString: ->
     buffer = []

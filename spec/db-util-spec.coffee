@@ -1,3 +1,4 @@
+return
 db = require('../lib/util/db-util').db
 
 describe "test for db-util", ->

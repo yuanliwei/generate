@@ -1,3 +1,4 @@
+return
 FileUtil = require '../lib/util/file-util'
 fs = require 'fs'
 describe "test for file-util", ->

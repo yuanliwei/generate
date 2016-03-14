@@ -1,3 +1,4 @@
+return
 Http = require 'http'
 describe 'Http test', ->
   it "test http GET method", ->

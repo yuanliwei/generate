@@ -1,3 +1,4 @@
+Config = require '../lib/config'
 http = require 'http'
 fs = require 'fs'
 low = require 'lowdb'
@@ -10,7 +11,7 @@ window.fs = fs
 
 format.extend(String.prototype)
 
-g_basePath = "C:/Users/y/github/analysis/lib/data/"
+g_basePath = "#{Config.basePath}data/"
 fs.mkdir g_basePath if not fs.existsSync g_basePath
 
 db = low "#{g_basePath}config_db.json", {storage}

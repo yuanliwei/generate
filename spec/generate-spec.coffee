@@ -1,3 +1,6 @@
+Config = require '../lib/config'
+return if Config.runOneSpec
+
 Generate = require '../lib/generate'
 
 # Use the command `window:run-package-specs` (cmd-alt-ctrl-p) to run specs.

@@ -1,3 +1,6 @@
+Config = require '../../lib/config'
+return if Config.runOneSpec
+
 Http = require 'http'
 describe 'Http test', ->
   it "test http GET method", ->

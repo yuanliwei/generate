@@ -1,3 +1,6 @@
+Config = require '../lib/config'
+return if Config.runOneSpec
+
 StringUtil = require '../lib/string-util-s'
 
 describe 'StringUtil test', ->

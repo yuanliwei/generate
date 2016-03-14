@@ -1,3 +1,6 @@
+Config = require '../../lib/config'
+return if Config.runOneSpec
+
 Filed = require '../../lib/model/filed'
 
 describe 'Model Filed test', ->

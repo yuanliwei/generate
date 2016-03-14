@@ -1,9 +1,11 @@
+Config = require '../lib/config'
+return if Config.runOneSpec
+
 async = require 'async'
 fs = require 'fs'
 http = require 'http'
 
 describe "test for async", ->
-  return
   ###
   序列化执行函数列表中的方法
   ###

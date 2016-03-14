@@ -1,7 +1,10 @@
-FileUtil = require '../lib/util/file-util'
+Config = require '../lib/config'
+return if Config.runOneSpec
+
+# FileUtil = require '../lib/util/file-util'
 fs = require 'fs'
 describe "test for file-util", ->
-  return
+
   it "test save file data", ->
     path = FileUtil.basePath() + '/data/'
     FileUtil.mkDir path

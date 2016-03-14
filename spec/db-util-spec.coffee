@@ -1,7 +1,16 @@
-db = require('../lib/util/db-util').db
+Config = require '../lib/config'
+return if Config.runOneSpec
+
+fs = require 'fs'
+low = require 'lowdb'
+storage = require 'lowdb/file-sync'
+
+dataPath = "#{Config.basePath}data/"
+fs.mkdir dataPath if not fs.existsSync dataPath
+db = low "#{dataPath}test_db.json", {storage}
 
 describe "test for db-util", ->
-  return
+
   it "test insert data", ->
     count = db('test').size()
     db('test').push { time: "#{new Date().toLocaleString()}", title: "h1"}

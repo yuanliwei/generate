@@ -44,6 +44,12 @@ describe 'Model Class test', ->
     console.log "result for model : "
     console.dir model
     console.log "end -->>>>>>>>>>>>>"
-    console.log builder.join('\n')
+    java_src = builder.join('\n')
+
+    jsBeautify = require('js-beautify').js_beautify
+    b_java_src = jsBeautify(java_src, { })
+
+    console.log java_src
+    console.log b_java_src
     console.log "end------<<<<<<<<<<<<<<<<<<"
     window.model = model

@@ -30,13 +30,13 @@ main = () ->
   console.log "hello ylw...."
   # return
   # 下载目录数据
-  # loadIndexData()
+  loadIndexData()
   # 下载网页内容
-  # loadHtmlData()
+  loadHtmlData()
   # 解析网页内容
-  # parseHtmlToText()
+  parseHtmlToText()
   # 组装文档
-  # buildTxtFile()
+  buildTxtFile()
   console.log "run over!"
 
 exports.run = main

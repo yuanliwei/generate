@@ -6,6 +6,7 @@ GenerateView = require './generate-view'
 util = require './utils/util'
 
 StringUtil = require './utils/string-util'
+GenMV = require './gen-code/gen-m-v'
 
 module.exports = Generate =
   generateView: null
@@ -27,6 +28,11 @@ module.exports = Generate =
       'generate:java_model': => @gen console.log "hello...."
       'generate:java_format': => StringUtil.format "asFhdYin",1,3,4
       'generate:display': => @display()
+      'generate:json-java': => @genInNewPane GenMV.json_java
+      'generate:json-java-url': => @genInNewPane GenMV.json_java_url
+      'generate:json-java-db-xutils': => @genInNewPane GenMV.json_java_db_xutils
+      'generate:json-java-db-ormlite': => @genInNewPane GenMV.json_java_db_ormlite
+      # 'generate:json-java': => @genInNewPane GenMV.json_java
 
     @pkgDisposables.add atom.workspace.addOpener (uriToOpen) ->
       {protocol, pathname} = url.parse uriToOpen
@@ -104,7 +110,12 @@ module.exports = Generate =
     @open "generate://editor/#{editor.id}"
     .then (previewEditor) ->
       selection = editor.getSelectedText()
-      selection = editor.getText() if
-      compiled = method selection
+      selection = editor.getText() if selection.length < 1
+      compiled = ''
+      try
+        compiled = method selection
+      catch error
+        console.dir error
+        compiled = error.stack
       previewEditor.setText compiled
       activePane.activate()

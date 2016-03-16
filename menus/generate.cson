@@ -46,6 +46,22 @@
             'label': 'format'
             'command': 'generate:java_format'
           }
+          {
+            'label': 'json-java'
+            'command': 'generate:json-java'
+          }
+          {
+            'label': 'json-java-url'
+            'command': 'generate:json-java-url'
+          }
+          {
+            'label': 'json-java-db-xutils'
+            'command': 'generate:json-java-db-xutils'
+          }
+          {
+            'label': 'json-java-db-ormlite'
+            'command': 'generate:json-java-db-ormlite'
+          }
         ]
       }
     ]

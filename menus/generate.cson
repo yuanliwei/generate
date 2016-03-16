@@ -29,6 +29,10 @@
             'label': 'asciiArt'
             'command': 'generate:ascii_art'
           }
+          {
+            'label': 'display'
+            'command': 'generate:display'
+          }
         ]
       }
       {

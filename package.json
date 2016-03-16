@@ -9,6 +9,7 @@
     "atom-workspace": [
       "generate:toggle",
       "generate:ascii_art",
+      "generate:display",
       "generate:java_model",
       "generate:java_format"
       ]

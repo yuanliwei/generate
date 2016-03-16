@@ -11,9 +11,9 @@ JSON 转 Java model
     opts = {
         packageName: 'com.ylw.generate' [option]
         className: 'TestClass'          [require]
-        genSetter: 'true'               [option default 'false']
-        genGetter: 'true'               [option default 'false']
-        genInnerClass: 'true'           [option default 'true']
+        genSetter: true                 [option default true]
+        genGetter: true                 [option default true]
+        genInnerClass: true             [option default true]
     }
     jsonStr = '{"name": "ylw", "age": "12"}'
     javaSrc = j2j.toJava jsonStr, opts

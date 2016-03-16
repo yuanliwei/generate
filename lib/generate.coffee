@@ -78,8 +78,8 @@ module.exports = Generate =
     @open "generate://editor/#{editor.id}"
     .then (previewEditor) ->
       # compiled = util.compileOrStack editor
-      compiled1 = "util.compileOrStack editorutil.compileOrStack editorutil.compileOrStack editor"
-      previewEditor.setText compiled1
+      compiled = "util.compileOrStack editorutil.compileOrStack editorutil.compileOrStack editor"
+      previewEditor.setText compiled
       activePane.activate()
 
   # Similar to atom.workspace.open
@@ -96,11 +96,15 @@ module.exports = Generate =
       selection = editor.getSelectedText()
       editor.insertText method(selection)
 
-    # if (editor?)
-    #   selections = editor.getSelections()
-    #   sel.insertText(t(sel.getText()), { "select": true}) for sel in selections
-      # method selection,(error,art) ->
-      #   if error
-      #     console.error error
-      #   else
-      #     editor.insertText "\n#{art}\n"
+  genInNewPane: (method) ->
+    editor     = atom.workspace.getActiveTextEditor()
+    activePane = atom.workspace.getActivePane()
+    return unless editor?
+
+    @open "generate://editor/#{editor.id}"
+    .then (previewEditor) ->
+      selection = editor.getSelectedText()
+      selection = editor.getText() if
+      compiled = method selection
+      previewEditor.setText compiled
+      activePane.activate()

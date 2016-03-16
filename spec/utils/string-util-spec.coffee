@@ -1,7 +1,7 @@
-Config = require '../lib/config'
+Config = require '../../lib/config'
 return if Config.runOneSpec
 
-StringUtil = require '../lib/string-util-s'
+StringUtil = require '../../lib/utils/string-util'
 
 describe 'StringUtil test', ->
   it "test upperBegin method", ->

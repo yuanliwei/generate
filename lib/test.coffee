@@ -1,7 +1,7 @@
 cp = atom.packages.getLoadedPackage('generate').getMainModulePath()
 basePath = cp.substr 0,(cp.lastIndexOf('generate.coffee') - 1)
 console.log basePath
-# StringUtil = require "#{basePath}/string-util-s"
+# StringUtil = require "#{basePath}/string-util"
 
 ################################################################
 http = require 'http' 

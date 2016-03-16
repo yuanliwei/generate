@@ -1,4 +1,4 @@
-StringUtil = require '../string-util-s'
+StringUtil = require '../utils/string-util'
 Modifiers = require './modifiers'
 
 module.exports = class Filed

@@ -1,4 +1,4 @@
-Config = require '../lib/config'
+Config = require '../../lib/config'
 return if Config.runOneSpec
 
 fs = require 'fs'

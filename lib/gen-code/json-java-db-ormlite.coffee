@@ -1,7 +1,7 @@
 ClassModel = require '../model/class-model'
 Modifiers = require '../model/modifiers'
 Filed = require '../model/filed'
-StringUtil = require '../string-util-s'
+StringUtil = require '../utils/string-util'
 
 ###
 JSON 转 Java model

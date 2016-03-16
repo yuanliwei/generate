@@ -3,11 +3,9 @@ querystring = require 'querystring'
 GenerateView = require './generate-view'
 {CompositeDisposable} = require 'atom'
 
-util = require './util'
-Java = require './java'
-java = new Java()
-StringUtil = require './string-util'
-stringUtil = new StringUtil()
+util = require './utils/util'
+
+StringUtil = require './utils/string-util'
 
 module.exports = Generate =
   generateView: null
@@ -26,8 +24,8 @@ module.exports = Generate =
     @subscriptions.add atom.commands.add 'atom-workspace',
       'generate:toggle': => @toggle()
       'generate:ascii_art': => @ascii_art()
-      'generate:java_model': => @gen java.showHello
-      'generate:java_format': => stringUtil.format "asFhdYin",1,3,4
+      'generate:java_model': => @gen console.log "hello...."
+      'generate:java_format': => StringUtil.format "asFhdYin",1,3,4
       'generate:display': => @display()
 
     @pkgDisposables.add atom.workspace.addOpener (uriToOpen) ->

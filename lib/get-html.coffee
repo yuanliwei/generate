@@ -1,4 +1,4 @@
-Config = require '../lib/config'
+Config = require './config'
 http = require 'http'
 fs = require 'fs'
 low = require 'lowdb'

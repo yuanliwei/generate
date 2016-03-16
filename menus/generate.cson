@@ -39,14 +39,6 @@
         'label':'java code'
         'submenu': [
           {
-            'label':'hello'
-            'command': 'generate:java_model'
-          }
-          {
-            'label': 'format'
-            'command': 'generate:java_format'
-          }
-          {
             'label': 'json-java'
             'command': 'generate:json-java'
           }

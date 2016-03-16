@@ -1,3 +1,10 @@
+===============================================================
+ packageName: 'packageName'
+ className: 'TestClassSpec'
+ genSetter: true
+ genGetter: true
+ genInnerClass: true
+===============================================================
 {
   "data": {
     "school_name": "语音风暴",

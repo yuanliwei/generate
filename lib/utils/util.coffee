@@ -34,7 +34,11 @@ module.exports =
 
     # set editor grammar to correct language
     # grammar = atom.grammars.selectGrammar pluginManager.getCompiledScopeByEditor(sourceEditor)
-    # previewEditor.setGrammar grammar
+    grammars = atom.grammars.getGrammars()
+    grammar = grammars[0]
+    grammars.forEach (gram) ->
+      grammar = gram if gram.name is "Java"
+    previewEditor.setGrammar grammar
 
     # HACK: Override TextBuffer saveAs function
     previewEditor.getBuffer().saveAs = ->

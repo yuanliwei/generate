@@ -25,8 +25,7 @@ module.exports = Generate =
     @subscriptions.add atom.commands.add 'atom-workspace',
       'generate:toggle': => @toggle()
       'generate:ascii_art': => @ascii_art()
-      'generate:java_model': => @gen console.log "hello...."
-      'generate:java_format': => StringUtil.format "asFhdYin",1,3,4
+      # 'generate:java_model': => @gen console.log "hello...."
       'generate:display': => @display()
       'generate:json-java': => @genInNewPane GenMV.json_java
       'generate:json-java-url': => @genInNewPane GenMV.json_java_url

@@ -14,9 +14,8 @@
       "generate:json-java",
       "generate:json-java-url",
       "generate:json-java-db-xutils",
-      "generate:json-java-db-ormlite",
-      "generate:java_format"
-      ]
+      "generate:json-java-db-ormlite"
+    ]
   },
   "repository": "https://github.com/atom/generate",
   "license": "MIT",

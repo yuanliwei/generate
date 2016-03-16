@@ -1,5 +1,5 @@
 Config = require '../../lib/config'
-# return if Config.runOneSpec
+return if Config.runOneSpec
 
 format = require 'string-format'
 format.extend(String.prototype)
@@ -13,9 +13,9 @@ describe 'Json2Java Class test', ->
     opts = {
       packageName: 'com.ylw.generate.spec' # [option]
       className: 'UrlTestClassSpec'          # [require]
-      genSetter: 'true'               # [option default 'false']
-      genGetter: 'true'               # [option default 'false']
-      genInnerClass: 'true'           # [option default 'true']
+      genSetter: true               # [option default false]
+      genGetter: true               # [option default false]
+      genInnerClass: true           # [option default true]
     }
     # jsonData = require './json-data/simple.json'
     jsonData = require './json-data/baiduyun.json'

@@ -1,4 +1,5 @@
 ClassModel = require '../model/class-model'
+Modifiers = require '../model/modifiers'
 Filed = require '../model/filed'
 StringUtil = require '../string-util-s'
 
@@ -11,9 +12,9 @@ JSON 转 Java model
     opts = {
         packageName: 'com.ylw.generate' [option]
         className: 'TestClass'          [require]
-        genSetter: 'true'               [option default 'false']
-        genGetter: 'true'               [option default 'false']
-        genInnerClass: 'true'           [option default 'true']
+        genSetter: 'true'               [option default 'true']
+        genGetter: 'true'               [option default 'true']
+        genInnerClass: 'false'           [option default 'false']
     }
     jsonStr = '{"name": "ylw", "age": "12"}'
     javaSrc = j2j.toJava jsonStr, opts
@@ -23,9 +24,9 @@ module.exports = class Json2Java
 
   constructor: () ->
     @className = 'ClassName'
-    @genSetter = false
-    @genGetter = false
-    @genInnerClass = true
+    @genSetter = true
+    @genGetter = true
+    @genInnerClass = false
 
   toJava: (jsonStr, opts) ->
     @packageName = opts.packageName if 'packageName' of opts
@@ -48,7 +49,7 @@ module.exports = class Json2Java
     b_java_src = jsBeautify(java_src, { })
 
   getModel: (name)->
-    model = new UrlCLassModel()
+    model = new DbCLassModel()
     model.name = name
     model.genGetter = @genGetter
     model.genSetter = @genSetter
@@ -77,7 +78,7 @@ module.exports = class Json2Java
       value = jsObj[name]
       type = @getType value, name, model
       comment = JSON.stringify value
-      filed = new Filed(type, name, null, comment)
+      filed = new DbFiled(type, name, null, comment)
       model.fileds.push filed
       # name
 
@@ -85,14 +86,15 @@ module.exports = class Json2Java
     switch ((jsObj).constructor)
       when Object
         name_ = StringUtil.format name, 2, 0
+        console.dir @genInnerClass
         if @genInnerClass
           innerModel = @getModel name_
           model.innerClass.push innerModel
           @parseJsonToJava jsObj, innerModel
         name_
       when Array
+        name_ = StringUtil.format name, 2, 0
         if @genInnerClass
-          name_ = StringUtil.format name, 2, 0
           innerModel = @getModel name_
           model.innerClass.push innerModel
           @parseJsonToJava jsObj[0], innerModel if jsObj.length > 0
@@ -121,36 +123,29 @@ module.exports = class Json2Java
     console.log(true.constructor == Boolean);
 ###
 
-class UrlCLassModel extends ClassModel
-  insertOtherCode: (builder) ->
-    # console.log "implament in sub class"
-    ###
-    public TestModel getTestModel() {
-        TestModel info = new TestModel();
-        info.setUserName(this.user_name);
-        return info;
-    }
-    ###
-    templateClass = """
-        public {ClassName} get{ClassName}() {
-            {ClassName} info = new {ClassName}();
-            {setFileds}
-            return info;
-        }
-        """
-    templateSetFiled = "info.set{setJavaVarName}(this.{varName});"
-    filedsBuilder = []
+class DbCLassModel extends ClassModel
+  genClassName: (builder) ->
+    # @Table(name = "tree_chapter_info")
+    tem = '@Table(name = "{0}")'
+    tableName = StringUtil.format @name, 3
+    builder.push(tem.format(tableName))
+    super builder
+  genNormalFiled: (builder) ->
+    first = true
     @fileds.forEach (filed) ->
-      name = {
-        setJavaVarName: StringUtil.format filed.name, 2, 0
-        varName: filed.name
-      }
-      filedsBuilder.push templateSetFiled.format name
+      if (filed.modifier & Modifiers.static) == 0
+        filed.toSource(builder, first)
+        first = false
 
-    # this.name = 'UrlCLassModel'
-    clsName = @name.replace /^Url/, ''
-    templClass = {
-      ClassName: clsName
-      setFileds: filedsBuilder.join('\n')
-    }
-    builder.push templateClass.format templClass
+class DbFiled extends Filed
+  toSource: (buffer, first) ->
+    # @Id(column = "id")
+    # @Column(column = "pid")
+    tem0 = '@Id(column = "{0}")'
+    tem = '@Column(column = "{0}")'
+    tem = tem0 if first
+    columeName = StringUtil.format @name, 4
+    buffer.push tem.format columeName
+    tem = '{0} {1} {2}{3};{4}'
+    name_ = StringUtil.format @name, 2
+    buffer.push StringUtil.formatStr tem, @getModifier(), @type, name_, @getValue(), @getComment()

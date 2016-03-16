@@ -1,8 +1,6 @@
 Config = require '../lib/config'
 return if Config.runOneSpec
 
-# FileUtil = require '../lib/util/file-util'
-FileUtil = require '../lib/util/file-util'
 fs = require 'fs'
 describe "test for file-util", ->
 

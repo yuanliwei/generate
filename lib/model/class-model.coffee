@@ -6,15 +6,13 @@ Modifiers = require './modifiers'
 
 module.exports = class Class
 
-  package: ''
-  name: 'Class'
-  fileds: []
-  innerClass: []
-  genGetter: false
-  genSetter: false
   constructor: () ->
+    @package = ''
+    @name = 'Class'
     @fileds = []
     @innerClass = []
+    @genGetter = false
+    @genSetter = false
 
   toSource: (builder) ->
     @genPackage builder

@@ -13,9 +13,9 @@ describe 'Json2Java Class test', ->
     opts = {
       packageName: 'com.ylw.generate.spec' # [option]
       className: 'TestClassSpec'          # [require]
-      genSetter: 'true'               # [option default 'false']
-      genGetter: 'true'               # [option default 'false']
-      genInnerClass: 'true'           # [option default 'true']
+      genSetter: true               # [option default false]
+      genGetter: true               # [option default false]
+      genInnerClass: true           # [option default true]
     }
     jsonData = require './json-data/simple.json'
     json = JSON.stringify(jsonData)

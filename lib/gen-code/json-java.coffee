@@ -21,10 +21,11 @@ JSON 转 Java model
 ###
 module.exports = class Json2Java
 
-  className = 'ClassName'
-  genSetter = false
-  genGetter = false
-  genInnerClass = true
+  constructor: () ->
+    @className = 'ClassName'
+    @genSetter = false
+    @genGetter = false
+    @genInnerClass = true
 
   toJava: (jsonStr, opts) ->
     @packageName = opts.packageName if 'packageName' of opts
@@ -85,15 +86,17 @@ module.exports = class Json2Java
     switch ((jsObj).constructor)
       when Object
         name_ = StringUtil.format name, 2, 0
-        innerModel = @getModel name_
-        model.innerClass.push innerModel
-        @parseJsonToJava jsObj, innerModel
+        if @genInnerClass
+          innerModel = @getModel name_
+          model.innerClass.push innerModel
+          @parseJsonToJava jsObj, innerModel
         name_
       when Array
         name_ = StringUtil.format name, 2, 0
-        innerModel = @getModel name_
-        model.innerClass.push innerModel
-        @parseJsonToJava jsObj[0], innerModel if jsObj.length > 0
+        if @genInnerClass
+          innerModel = @getModel name_
+          model.innerClass.push innerModel
+          @parseJsonToJava jsObj[0], innerModel if jsObj.length > 0
         "List<#{name_}>"
       when String
         "String"

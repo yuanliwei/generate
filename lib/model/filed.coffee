@@ -3,8 +3,6 @@ Modifiers = require './modifiers'
 
 module.exports = class Filed
 
-  annotations: []
-
   ###
   0x01:private
   0x02:public
@@ -12,10 +10,10 @@ module.exports = class Filed
   0x08:final
   0x10:static
   ###
-  modifier: Modifiers.private
-  type: 'String'
   constructor: (type, @name, @value, @comment) ->
-    @type = type || @type
+    @annotations = []
+    @modifier = Modifiers.private
+    @type = type || 'String'
 
   ###
   private String name = "value"; // this is comment

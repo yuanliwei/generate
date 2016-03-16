@@ -28,7 +28,7 @@ module.exports = class Class
 
   genPackage: (builder) ->
     tem = "package {0};"
-    builder.push(tem.format(@package)) if @package.trim().length > 0
+    builder.push(tem.format(@package)) if @package and @package.trim().length > 0
   genClassName: (builder) ->
     tem = "public class {0} {"
     builder.push(tem.format(@name))

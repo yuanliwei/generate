@@ -40,22 +40,22 @@ module.exports = class Json2Java
     @parseJsonToJava jsObj, model
     builder = []
     model.toSource builder
-    console.dir model
+    # console.dir model
 
     java_src = builder.join('\n')
     jsBeautify = require('js-beautify').js_beautify
     b_java_src = jsBeautify(java_src, { })
 
   getModel: (name)->
-    model = new ClassModel()
+    model = new UrlCLassModel()
     model.name = name
     model.genGetter = @genGetter
     model.genSetter = @genSetter
     model
 
   parseJsonToJava: (jsObj, model) ->
-    window.jsObj = jsObj
-    console.dir jsObj
+    # window.jsObj = jsObj
+    # console.dir jsObj
     switch ((jsObj).constructor)
       when Object
         # console.log "Object"
@@ -75,9 +75,8 @@ module.exports = class Json2Java
       # (type, @name, @value, @comment)
       value = jsObj[name]
       type = @getType value, name, model
-      name_ = StringUtil.format name, 2
       comment = JSON.stringify value
-      filed = new Filed(type, name_, null, comment)
+      filed = new Filed(type, name, null, comment)
       model.fileds.push filed
       # name
 
@@ -118,3 +117,38 @@ module.exports = class Json2Java
     console.log((123).constructor == Number);
     console.log(true.constructor == Boolean);
 ###
+
+class UrlCLassModel extends ClassModel
+  thiz = @
+  insertOtherCode: (builder) ->
+    # console.log "implament in sub class"
+    ###
+    public TestModel getTestModel() {
+        TestModel info = new TestModel();
+        info.setUserName(this.user_name);
+        return info;
+    }
+    ###
+    templateClass = """
+        public {ClassName} get{ClassName}() {
+            {ClassName} info = new {ClassName}();
+            {setFileds}
+            return info;
+        }
+        """
+    templateSetFiled = "info.set{setJavaVarName}(this.{varName});"
+    filedsBuilder = []
+    @fileds.forEach (filed) ->
+      name = {
+        setJavaVarName: StringUtil.format filed.name, 2, 0
+        varName: filed.name
+      }
+      filedsBuilder.push templateSetFiled.format name
+
+    # thiz.name = 'UrlCLassModel'
+    clsName = @name.replace /^Url/, ''
+    templClass = {
+      ClassName: clsName
+      setFileds: filedsBuilder.join('\n')
+    }
+    builder.push templateClass.format templClass

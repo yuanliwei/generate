@@ -1,0 +1,19 @@
+{
+  "data": {
+    "school_name": "语音风暴",
+    "student_name": "老师3",
+    "user_type": 1030410,
+    "student_uuid": "FE8D6C7064BF2A3B0BACFC30978F53B7",
+    "username": "laoshi3",
+    "student_id": 9030,
+    "class_id": 18676,
+    "class_name": "语音风暴内部测试",
+    "access_token": "6e93dc0fcc10479584fe603aa4af1288",
+    "school_id": 1264,
+    "grade_id": 11414
+  },
+  "result": {
+    "code": "0",
+    "msg": "SUCCESS"
+  }
+}

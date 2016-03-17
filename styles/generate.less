@@ -3,6 +3,87 @@
 // See https://github.com/atom/atom-dark-ui/blob/master/styles/ui-variables.less
 // for a full listing of what's available.
 @import "ui-variables";
+@import "syntax-variables";
 
 .generate {
+}
+
+.search_root{
+}
+
+.search_input {
+  display: block;
+  width: 100%;
+  font-size: xx-large;
+  color: #FF0000;
+  text-shadow: 5px 3px 6px #717ED6;
+  border-radius: 10px;
+  border: #F7D4A6 3px solid;
+  padding: 3px 20px;
+  background-color: #CBD2D8;
+  editable:true;
+  &:hover{
+    border-color: FD9000;
+  }
+}
+
+.generate-input-panel {
+  @min-width: 200px; // min width before it starts scrolling
+
+  -webkit-user-select: none;
+  padding: @component-padding/2;
+  overflow-x: auto;
+
+  .header {
+    padding: @component-padding/4 @component-padding/2;
+    min-width: @min-width;
+    .header-item {
+      margin: @component-padding/4 0;
+    }
+    .description {
+      display: inline-block;
+      .subtle-info-message {
+        padding-left: 5px;
+        color: @text-color-subtle;
+        .highlight {
+          color: @text-color;
+          font-weight: normal;
+        }
+      }
+    }
+    .options-label {
+      color: @text-color-subtle;
+      position: relative;
+      .options {
+        color: @text-color;
+      }
+    }
+  }
+
+  .input-block {
+    display: flex;
+    flex-wrap: nowrap;;
+    width: 100%;
+    min-width: @min-width;
+
+    .input-block-item {
+      flex: 1;
+      padding: @component-padding / 2;
+    }
+    .editor-container {
+      position: relative;
+      atom-text-editor {
+        width: 100%;
+      }
+    }
+    .btn-group{
+      display: flex;
+      width: 12em;
+      padding: @component-padding / 2;
+      .btn {
+        flex: 1;
+      }
+    }
+
+  }
 }

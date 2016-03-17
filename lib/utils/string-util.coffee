@@ -8,14 +8,12 @@ exports.lowerBegin = (item) ->
 
 exports.formatJavaType = (item) ->
   switch item
-    when 'char' then 'String'
-    when 'string' then 'String'
-    when 'datetime' then 'String'
-    when 'text' then 'String'
+    when 'char','string','datetime','text'
+      'String'
     when 'int' then 'int'
-    when 'decimal' then 'double'
+    when 'decimal','double'
+      'double'
     when 'float' then 'float'
-    when 'double' then 'double'
     else 'ERROR TYPE'
 
 exports.formatDbType = (item) ->

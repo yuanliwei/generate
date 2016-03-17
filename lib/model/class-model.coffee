@@ -42,10 +42,9 @@ module.exports = class Class
     @innerClass.forEach (model) ->
       model.toSource builder
   genGetterSetter: (builder) ->
-    outter = @
-    @fileds.forEach (filed) ->
+    @fileds.forEach (filed) =>
       if (filed.modifier & (Modifiers.static|Modifiers.final|Modifiers.public)) == 0
-        filed.toSetter builder if outter.genSetter
-        filed.toGetter builder if outter.genGetter
+        filed.toSetter builder if @genSetter
+        filed.toGetter builder if @genGetter
   genCloseClass: (builder) ->
     builder.push '}'

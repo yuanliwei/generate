@@ -1,6 +1,6 @@
 ===============================================================
- packageName: 'packageName'
- className: 'TestClassSpec'
+ packageName: packageName
+ className: TestClassSpec
  genSetter: true
  genGetter: true
  genInnerClass: true

@@ -37,17 +37,16 @@ module.exports = class Filed
 
     # parse modifier type name
     @modifier = 0
-    thiz = @
     items = source.split /\s+/g
-    items.forEach (item) ->
+    items.forEach (item) =>
       if item of Modifiers
         value = Modifiers[item]
-        thiz.modifier += value
+        @modifier += value
       else if not thiz.type
-        thiz.type = item
+        @type = item
       else
-        thiz.name = item
-    thiz
+        @name = item
+    @
 
   ###
   private String name = "value"; // this is comment

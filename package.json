@@ -14,7 +14,9 @@
       "generate:json-java",
       "generate:json-java-url",
       "generate:json-java-db-xutils",
-      "generate:json-java-db-ormlite"
+      "generate:json-java-db-ormlite",
+      "generate:template-search",
+      "generate:template-find-view"
     ]
   },
   "repository": "https://github.com/atom/generate",
@@ -23,6 +25,7 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
+    "atom-space-pen-views": "^2.1.0",
     "figlet": "1.1.1",
     "string-format": "0.5.0",
     "cheerio": "0.20.0",

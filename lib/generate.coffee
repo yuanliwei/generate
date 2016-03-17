@@ -1,6 +1,10 @@
 url         = require 'url'
 querystring = require 'querystring'
 GenerateView = require './generate-view'
+SearchView = require './view/search-view'
+
+FindView = require './view/find-view'
+
 {CompositeDisposable} = require 'atom'
 
 util = require './utils/util'
@@ -10,12 +14,16 @@ GenMV = require './gen-code/gen-m-v'
 
 module.exports = Generate =
   generateView: null
+  searchView: null
   modalPanel: null
+  searchPanel: null
   subscriptions: null
 
   activate: (state) ->
     @generateView = new GenerateView(state.generateViewState)
+    @searchView = new SearchView(state.generateViewState)
     @modalPanel = atom.workspace.addModalPanel(item: @generateView.getElement(), visible: false)
+    @searchPanel = atom.workspace.addModalPanel(item: @searchView.getElement(), visible: false)
 
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
@@ -27,6 +35,10 @@ module.exports = Generate =
       'generate:ascii_art': => @ascii_art()
       # 'generate:java_model': => @gen console.log "hello...."
       'generate:display': => @display()
+      'generate:template-search': => @toggleSearch()
+      'generate:template-for-gen-java': => @toggleSearch()
+      'generate:template-find-view': => @createFindView()
+      'generate:template-store-gen-java': => @display()
       'generate:json-java': => @genInNewPane GenMV.json_java
       'generate:json-java-url': => @genInNewPane GenMV.json_java_url
       'generate:json-java-db-xutils': => @genInNewPane GenMV.json_java_db_xutils
@@ -63,6 +75,14 @@ module.exports = Generate =
       @modalPanel.hide()
     else
       @modalPanel.show()
+
+  toggleSearch: ->
+    console.log 'SearchView was toggled!'
+
+    if @searchPanel.isVisible()
+      @searchPanel.hide()
+    else
+      @searchPanel.show()
 
   ascii_art: ->
     if editor = atom.workspace.getActiveTextEditor()
@@ -118,3 +138,13 @@ module.exports = Generate =
         compiled = error.stack
       previewEditor.setText compiled
       activePane.activate()
+
+  createFindView: ->
+    console.log "create find view"
+    # @createViews()
+    # togglePanel @findPanel, @projectFindPanel, => @findView.focusFindEditor()
+    return if @findView?
+    options = {}
+    @findView = new FindView(@findModel, options)
+    @findPanel = atom.workspace.addBottomPanel(item: @findView, visible: true, className: 'tool-panel panel-bottom')
+    @findView.setPanel(@findPanel)

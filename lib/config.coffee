@@ -1,24 +1,19 @@
 fs = require 'fs'
 ini = require 'ini'
+cfg = require '../config/config.json'
 
-Config = {
-    basePath: "C:\\Users\\up366pc1.hxtt-pc1\\.atom\\packages\\generate\\"
-    runOneSpec: true
-  }
+class Config
 
+  constructor: ->
+    @basePath = cfg.basePath
+    @runOneSpec = cfg.runOneSpec
+    @g_basePath = "#{@basePath}config/"
+    fs.mkdir @g_basePath unless fs.existsSync @g_basePath
+    @configPath = "#{@g_basePath}config.ini"
+    fs.writeFileSync(@configPath, '') unless fs.existsSync @configPath
+    @config = ini.parse(fs.readFileSync(@configPath, 'utf-8'))
+    @config.gen_java = {} unless @config.gen_java?
+  saveConfig: ->
+    fs.writeFileSync(@configPath, ini.stringify(@config))
 
-configPath =( ->
-  g_basePath = "#{Config.basePath}config/"
-  fs.mkdir g_basePath if not fs.existsSync g_basePath
-  "#{g_basePath}config.ini")
-
-config =( ->
-  fs.writeFileSync(configPath, '') if not fs.existsSync configPath
-  ini.parse(fs.readFileSync(configPath, 'utf-8')))
-
-saveConfig = ->
-  fs.writeFileSync(configPath, ini.stringify(config, { section: 'section' }))
-
-exports.Config = Config
-exports.Ini = config
-exports.saveIni = saveConfig
+module.exports = new Config()

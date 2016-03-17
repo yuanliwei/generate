@@ -3,28 +3,25 @@
 buildTextEditor = require './build-text-editor'
 
 Config = require '../config'
-
-config = Config.Ini
-
-# config.scope = 'local'
-# config.database.database = 'use_another_database'
-# config.paths.default.tmpdir = '/tmp'
-# config.paths.default.array.push('fourth value')
-
-# fs.writeFileSync('./config_modified.ini', ini.stringify(config, { section: 'section' }))
-
+config = Config.config
 
 module.exports =
 class FindView extends View
   @content: (model, {findBuffer, replaceBuffer}) ->
-    findEditor = buildTextEditor
+    packageNameEditor = buildTextEditor
+      mini: true
+      tabLength: 2
+      softTabs: true
+      softWrapped: false
+      buffer: findBuffer
+      placeholderText: 'package name'
+    classNameEditor = buildTextEditor
       mini: true
       tabLength: 2
       softTabs: true
       softWrapped: false
       buffer: findBuffer
       placeholderText: 'class name'
-    console.dir @
     @div tabIndex: -1, class: 'generate-input-panel', =>
       @header class: 'header', =>
         @span outlet: 'descriptionLabel', class: 'header-item description', 'Input class name'
@@ -34,17 +31,24 @@ class FindView extends View
 
       @section class: 'input-block find-container', =>
         @div class: 'input-block-item editor-container', =>
-          @subview 'findEditor', new TextEditorView(editor: findEditor)
+          @subview 'packageNameEditor', new TextEditorView(editor: packageNameEditor)
           @div class: 'find-meta-container', =>
             @span outlet: 'resultCounter', class: 'text-subtle result-counter', ''
 
         @div class: 'btn-group', =>
           @button outlet: 'nextButton', class: 'btn', 'Close'
 
+      @section class: 'input-block find-container', =>
+        @div class: 'input-block-item editor-container', =>
+          @subview 'classNameEditor', new TextEditorView(editor: classNameEditor)
+          @div class: 'find-meta-container', =>
+            @span outlet: 'resultCounter', class: 'text-subtle result-counter', ''
+
   initialize: (@model, {@findHistoryCycler, @replaceHistoryCycler}) ->
     @subscriptions = new CompositeDisposable
-
     @handleEvents()
+    @packageNameEditor.setText config.gen_java.packageName if config.gen_java.packageName?
+    @classNameEditor.setText config.gen_java.className if config.gen_java.className?
 
   destroy: ->
     @subscriptions?.dispose()
@@ -59,15 +63,19 @@ class FindView extends View
       'core:close': => @panel?.hide()
       'core:cancel': => @panel?.hide()
 
-    @on 'focus', => @findEditor.focus()
+    @on 'focus', => @classNameEditor.focus()
 
-    @findEditor.on 'blur', =>
-      className = @findEditor.getText()
-      config.gen_java = {}
-      config.gen_java.className = className
-      Config.saveIni()
+    @packageNameEditor.on 'blur', => @saveConfig()
+    @classNameEditor.on 'blur', => @saveConfig()
 
     @find('button').on 'click', =>
       workspaceElement = atom.views.getView(atom.workspace)
       workspaceElement.focus()
       @panel?.hide()
+
+  saveConfig: ->
+    packageName = @packageNameEditor.getText()
+    className = @classNameEditor.getText()
+    config.gen_java.packageName = packageName
+    config.gen_java.className = className
+    Config.saveConfig()

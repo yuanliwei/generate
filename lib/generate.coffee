@@ -3,7 +3,7 @@ querystring = require 'querystring'
 GenerateView = require './generate-view'
 SearchView = require './view/search-view'
 
-FindView = require './view/find-view'
+JavaConfigView = require './view/java-config-view'
 
 {CompositeDisposable} = require 'atom'
 
@@ -37,7 +37,7 @@ module.exports = Generate =
       'generate:display': => @display()
       'generate:template-search': => @toggleSearch()
       'generate:template-for-gen-java': => @toggleSearch()
-      'generate:template-find-view': => @createFindView()
+      'generate:template-find-view': => @createJavaConfigView()
       'generate:template-store-gen-java': => @display()
       'generate:json-java': => @genInNewPane GenMV.json_java
       'generate:json-java-url': => @genInNewPane GenMV.json_java_url
@@ -139,13 +139,10 @@ module.exports = Generate =
       previewEditor.setText compiled
       activePane.activate()
 
-  createFindView: ->
-    console.log "create find view"
-    # @createViews()
-    # togglePanel @findPanel, @projectFindPanel, => @findView.focusFindEditor()
+  createJavaConfigView: ->
     @findPanel?show().
-    return if @findView?
+    return if @javaConfigView?
     options = {}
-    @findView = new FindView(@findModel, options)
-    @findPanel = atom.workspace.addBottomPanel(item: @findView, visible: true, className: 'tool-panel panel-bottom')
-    @findView.setPanel(@findPanel)
+    @javaConfigView = new JavaConfigView(@findModel, options)
+    @findPanel = atom.workspace.addBottomPanel(item: @javaConfigView, visible: true, className: 'tool-panel panel-bottom')
+    @javaConfigView.setPanel(@findPanel)

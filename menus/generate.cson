@@ -35,15 +35,20 @@
           }
         ]
       }
-      {
-        # 'label': 'template-search'
-        # 'command': 'generate:template-search'
-        'label': 'template-find'
-        'command': 'generate:template-find-view'
-      }
+      # {
+      #   # 'label': 'template-search'
+      #   # 'command': 'generate:template-search'
+      #   'label': 'template-find'
+      #   'command': 'generate:template-find-view'
+      # }
       {
         'label':'java code'
         'submenu': [
+          {
+            'label': 'java-config'
+            'command': 'generate:template-find-view'
+          }
+          { 'type': 'separator' }
           {
             'label': 'json-java'
             'command': 'generate:json-java'

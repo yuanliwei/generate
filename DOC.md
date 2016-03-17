@@ -34,3 +34,5 @@
 # Others
 ## [编程语言网络](http://exploringdata.github.io/vis/programming-languages-influence-network/)
 ## [全球数据图表](http://exploringdata.github.io/)
+
+## [微软新出的编辑器VSCode](https://az764295.vo.msecnd.net/stable/f291f4ad600767626b24a4b15816b04bee9a3049/VSCodeSetup-stable.exe)

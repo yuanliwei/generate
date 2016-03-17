@@ -143,6 +143,7 @@ module.exports = Generate =
     console.log "create find view"
     # @createViews()
     # togglePanel @findPanel, @projectFindPanel, => @findView.focusFindEditor()
+    @findPanel?show().
     return if @findView?
     options = {}
     @findView = new FindView(@findModel, options)

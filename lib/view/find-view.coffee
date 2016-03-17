@@ -2,6 +2,18 @@
 {CompositeDisposable} = require 'atom'
 buildTextEditor = require './build-text-editor'
 
+Config = require '../config'
+
+config = Config.Ini
+
+# config.scope = 'local'
+# config.database.database = 'use_another_database'
+# config.paths.default.tmpdir = '/tmp'
+# config.paths.default.array.push('fourth value')
+
+# fs.writeFileSync('./config_modified.ini', ini.stringify(config, { section: 'section' }))
+
+
 module.exports =
 class FindView extends View
   @content: (model, {findBuffer, replaceBuffer}) ->
@@ -12,7 +24,7 @@ class FindView extends View
       softWrapped: false
       buffer: findBuffer
       placeholderText: 'class name'
-
+    console.dir @
     @div tabIndex: -1, class: 'generate-input-panel', =>
       @header class: 'header', =>
         @span outlet: 'descriptionLabel', class: 'header-item description', 'Input class name'
@@ -32,7 +44,6 @@ class FindView extends View
   initialize: (@model, {@findHistoryCycler, @replaceHistoryCycler}) ->
     @subscriptions = new CompositeDisposable
 
-
     @handleEvents()
 
   destroy: ->
@@ -40,33 +51,23 @@ class FindView extends View
     @tooltipSubscriptions?.dispose()
 
   setPanel: (@panel) ->
-    @subscriptions.add @panel.onDidChangeVisible (visible) =>
-      if visible then @didShow() else @didHide()
-
-  didShow: ->
-    atom.views.getView(atom.workspace).classList.add('find-visible')
-
-  didHide: ->
-    @hideAllTooltips()
-    workspaceElement = atom.views.getView(atom.workspace)
-    workspaceElement.focus()
-    workspaceElement.classList.remove('find-visible')
-
-  hideAllTooltips: ->
-    @tooltipSubscriptions.dispose()
-    @tooltipSubscriptions = null
+    # @subscriptions.add @panel.onDidChangeVisible (visible) =>
+    #   if visible then @didShow() else @didHide()
 
   handleEvents: ->
-    # @findEditor.getModel().onDidStopChanging => @liveSearch()
-
-    @subscriptions.add atom.commands.add @findEditor.element,
-      'core:confirm': => @confirm()
-
     @subscriptions.add atom.commands.add @element,
       'core:close': => @panel?.hide()
       'core:cancel': => @panel?.hide()
 
     @on 'focus', => @findEditor.focus()
-    @find('button').on 'click', ->
+
+    @findEditor.on 'blur', =>
+      className = @findEditor.getText()
+      config.gen_java = {}
+      config.gen_java.className = className
+      Config.saveIni()
+
+    @find('button').on 'click', =>
       workspaceElement = atom.views.getView(atom.workspace)
       workspaceElement.focus()
+      @panel?.hide()

@@ -42,7 +42,7 @@ module.exports = class Filed
       if item of Modifiers
         value = Modifiers[item]
         @modifier += value
-      else if not thiz.type
+      else if not @type
         @type = item
       else
         @name = item

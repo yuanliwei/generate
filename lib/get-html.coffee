@@ -7,8 +7,6 @@ format = require 'string-format'
 cheerio = require 'cheerio'
 async = require 'async'
 
-window.fs = fs
-
 format.extend(String.prototype)
 
 g_basePath = "#{Config.basePath}data/"

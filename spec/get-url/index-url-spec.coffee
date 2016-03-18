@@ -78,3 +78,44 @@ describe 'IndexUrl Class test', ->
       console.dir error
       console.dir response
       console.dir body
+
+  it "test for gen menu command", ->
+    genTem = """
+          menus/generate.cson
+          -----------------------------
+          {
+            'label': '{name}'
+            'command': 'generate:{name}'
+          }
+
+          package.json
+          ----------------------------
+          "generate:{name}",
+
+          generate.coffee
+          ----------------------------
+          'generate:{name}': => GetUrl.{method}()
+
+          """
+    # menus/generate.cson
+    # -----------------------------
+    # {
+    #   'label': 'get-url-show-url-config'
+    #   'command': 'generate:get-url-show-url-config'
+    # }
+    #
+    # package.json
+    # ----------------------------
+    # "generate:get-url-show-url-config",
+    #
+    # generate.coffee
+    # ----------------------------
+    # 'generate:get-url-show-url-config': => GetUrl.get_url_show_url_config()
+
+
+    selectionText = 'gen_menu_command'
+    rep = {
+      name: selectionText.replace /_/g, '-'
+      method: selectionText
+    }
+    console.log genTem.format(rep)

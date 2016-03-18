@@ -10,6 +10,7 @@
       "generate:toggle",
       "generate:ascii_art",
       "generate:display",
+      "generate:gen-menu-command",
       "generate:java_model",
       "generate:json-java",
       "generate:json-java-url",
@@ -18,7 +19,10 @@
       "generate:template-search",
       "generate:template-find-view",
       "generate:get-url-listurl",
-      "generate:get-url-show-url-config"
+      "generate:get-url-show-url-config",
+      "generate:get-url-save-config",
+      "generate:get-url-insert-url",
+      "generate:get-url-request-config"
     ]
   },
   "repository": "https://github.com/atom/generate",

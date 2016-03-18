@@ -40,12 +40,19 @@ module.exports = Generate =
       'generate:template-for-gen-java': => @toggleSearch()
       'generate:template-find-view': => @createJavaConfigView()
       'generate:template-store-gen-java': => @display()
+      'generate:gen-menu-command': => @genInNewPane GenMV.gen_menu_command
       'generate:json-java': => @genInNewPane GenMV.json_java
       'generate:json-java-url': => @genInNewPane GenMV.json_java_url
       'generate:json-java-db-xutils': => @genInNewPane GenMV.json_java_db_xutils
       'generate:json-java-db-ormlite': => @genInNewPane GenMV.json_java_db_ormlite
       'generate:get-url-listurl': => GetUrl.get_url_listurl()
       'generate:get-url-show-url-config': => GetUrl.get_url_show_url_config()
+      'generate:get-url-save-config': => GetUrl.get_url_save_config()
+      'generate:get-url-insert-url': => GetUrl.get_url_insert_url()
+      'generate:get-url-request-config': => GetUrl.get_url_request_config()
+
+
+
       # 'generate:json-java': => @genInNewPane GenMV.json_java
 
     @pkgDisposables.add atom.workspace.addOpener (uriToOpen) ->

@@ -1,4 +1,6 @@
 config = require('../config').config
+format = require 'string-format'
+format.extend(String.prototype)
 
 getOpts = ->
   opts = {
@@ -36,3 +38,28 @@ exports.json_java_db_ormlite = (jsonStr) ->
   json2Java = new Json2Java()
   json = jsonStr
   javaSrc = json2Java.toJava json, getOpts()
+
+genTem = """
+      menus/generate.cson
+      -----------------------------
+      {
+        'label': '{name}'
+        'command': 'generate:{name}'
+      }
+
+      package.json
+      ----------------------------
+      "generate:{name}",
+
+      generate.coffee
+      ----------------------------
+      'generate:{name}': => {{XXX}}.{method}()
+
+      """
+
+exports.gen_menu_command = (selectionText) ->
+  rep = {
+    name: selectionText.replace /_/g, '-'
+    method: selectionText
+  }
+  genTem.format(rep)

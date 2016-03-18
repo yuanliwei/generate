@@ -22,6 +22,11 @@
         'label': 'generate'
         'submenu': [
           {
+            'label': 'gen-menu-command'
+            'command': 'generate:gen-menu-command'
+          }
+          { 'type': 'separator' }
+          {
             'label': 'Toggle'
             'command': 'generate:toggle'
           }
@@ -43,8 +48,20 @@
             'command': 'generate:get-url-listurl'
           }
           {
+            'label': 'get-url-insert-url'
+            'command': 'generate:get-url-insert-url'
+          }
+          {
             'label': 'get_url_show_url_config'
             'command': 'generate:get-url-show-url-config'
+          }
+          {
+            'label': 'get-url-save-config'
+            'command': 'generate:get-url-save-config'
+          }
+          {
+            'label': 'get-url-request-config'
+            'command': 'generate:get-url-request-config'
           }
         ]
       }

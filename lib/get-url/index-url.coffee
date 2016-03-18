@@ -50,8 +50,5 @@ module.exports = class IndexUrl
     s = '&' if urlConfig.url.indexOf('?') > 0
     s = '' unless s?
     opts.url = urlConfig.url + s + queryString
-    console.dir opts
-    console.dir qs
-    console.dir queryString
     request opts, (error, response, body) ->
       callback error, response, body

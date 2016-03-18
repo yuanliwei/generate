@@ -11,6 +11,7 @@ util = require './utils/util'
 
 StringUtil = require './utils/string-util'
 GenMV = require './gen-code/gen-m-v'
+GetUrl = require './get-url/get-url-m-v'
 
 module.exports = Generate =
   generateView: null
@@ -43,6 +44,8 @@ module.exports = Generate =
       'generate:json-java-url': => @genInNewPane GenMV.json_java_url
       'generate:json-java-db-xutils': => @genInNewPane GenMV.json_java_db_xutils
       'generate:json-java-db-ormlite': => @genInNewPane GenMV.json_java_db_ormlite
+      'generate:get-url-listurl': => GetUrl.get_url_listurl()
+      'generate:get_url_show_url_config': => GetUrl.get_url_show_url_config()
       # 'generate:json-java': => @genInNewPane GenMV.json_java
 
     @pkgDisposables.add atom.workspace.addOpener (uriToOpen) ->

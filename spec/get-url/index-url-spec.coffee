@@ -29,7 +29,24 @@ describe 'IndexUrl Class test', ->
     console.dir urls
 
   it "test index-url saveUrlConfig()", ->
-    urlConfig = {url: "http://www.baidu.com/", params:[{name:"name",value:"ylw"},{name:"age",value: 12}], postParams: [{name:"name",value:"ylw"},{name:"age",value: 192}]}
+    urlConfig = {
+      "url": "http://www.baidu.com",
+      "opts": {
+        "method": "GET",
+        "headers": {
+          "Accept": "text/html",
+          "Cache-Control": "no-cache"
+          },
+        "queryString": {
+          "name":"ylw",
+          "age": 123
+          },
+        "formData": {
+          "name":"ylw",
+          "age": 123
+        }
+      }
+    }
     indexUrl.saveUrlConfig(urlConfig)
 
   it "test index-url getUrlConfig()", ->
@@ -41,7 +58,7 @@ describe 'IndexUrl Class test', ->
     urlConfig = {
       "url": "http://www.baidu.com",
       "opts": {
-        "method": "POST",
+        "method": "GET",
         "headers": {
           "Accept": "text/html",
           "Cache-Control": "no-cache"

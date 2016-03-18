@@ -16,7 +16,9 @@
       "generate:json-java-db-xutils",
       "generate:json-java-db-ormlite",
       "generate:template-search",
-      "generate:template-find-view"
+      "generate:template-find-view",
+      "generate:get-url-listurl",
+      "generate:get_url_show_url_config"
     ]
   },
   "repository": "https://github.com/atom/generate",

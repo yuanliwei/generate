@@ -1,17 +1,17 @@
 # See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
 
 # 右键菜单
-'context-menu':
-  'atom-text-editor': [
-    {
-      'label': 'Toggle generate'
-      'command': 'generate:toggle'
-    }
-    {
-      'label': 'Toggle asciiArt'
-      'command': 'generate:ascii_art'
-    }
-  ]
+# 'context-menu':
+#   'atom-text-editor': [
+#     {
+#       'label': 'Toggle generate'
+#       'command': 'generate:toggle'
+#     }
+#     {
+#       'label': 'Toggle asciiArt'
+#       'command': 'generate:ascii_art'
+#     }
+#   ]
 
   # 标准菜单
 'menu': [
@@ -35,12 +35,19 @@
           }
         ]
       }
-      # {
-      #   # 'label': 'template-search'
-      #   # 'command': 'generate:template-search'
-      #   'label': 'template-find'
-      #   'command': 'generate:template-find-view'
-      # }
+      {
+        'label': 'get-url'
+        'submenu': [
+          {
+            'label': 'get-url-listurl'
+            'command': 'generate:get-url-listurl'
+          }
+          {
+            'label': 'get_url_show_url_config'
+            'command': 'generate:get_url_show_url_config'
+          }
+        ]
+      }
       {
         'label':'java code'
         'submenu': [

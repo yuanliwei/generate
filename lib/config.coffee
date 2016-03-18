@@ -8,7 +8,8 @@ class Config
     @basePath = cfg.basePath
     @runOneSpec = cfg.runOneSpec
     @g_basePath = "#{@basePath}config/"
-    fs.mkdir @g_basePath unless fs.existsSync @g_basePath
+    mkdirp = require 'mkdirp'
+    mkdirp.sync @g_basePath unless fs.existsSync @g_basePath
     @configPath = "#{@g_basePath}config.ini"
     fs.writeFileSync(@configPath, '') unless fs.existsSync @configPath
     @config = ini.parse(fs.readFileSync(@configPath, 'utf-8'))

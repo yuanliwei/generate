@@ -6,7 +6,8 @@ low = require 'lowdb'
 storage = require 'lowdb/file-sync'
 
 dataPath = "#{Config.basePath}data/"
-fs.mkdir dataPath if not fs.existsSync dataPath
+mkdirp = require 'mkdirp'
+mkdirp.sync dataPath if not fs.existsSync dataPath
 db = low "#{dataPath}test_db.json", {storage}
 
 describe "test for db-util", ->

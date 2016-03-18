@@ -10,7 +10,8 @@ async = require 'async'
 format.extend(String.prototype)
 
 g_basePath = "#{Config.basePath}data/"
-fs.mkdir g_basePath if not fs.existsSync g_basePath
+mkdirp = require 'mkdirp'
+mkdirp.sync g_basePath if not fs.existsSync g_basePath
 
 db = low "#{g_basePath}config_db.json", {storage}
 db0 = low "#{g_basePath}index_db.json", {storage}

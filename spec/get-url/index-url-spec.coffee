@@ -9,10 +9,10 @@ indexUrl = new IndexUrl()
 
 describe 'IndexUrl Class test', ->
   it "test index-url insertUrl()", ->
-    filter = {name:"test:getData", url: "http://www.baidu.com/"}
+    filter = {name:"test:getData", url: "http://www.baidu.com"}
     size1 = indexUrl.listUrls(filter).length
     console.log "size1 : #{size1}"
-    urlObj = {name:"test:getData", url: "http://www.baidu.com/"}
+    urlObj = {name:"test:getData", url: "http://www.baidu.com"}
     indexUrl.insertUrl(urlObj)
     size2 = indexUrl.listUrls(filter).length
     if size1 is 0
@@ -50,7 +50,7 @@ describe 'IndexUrl Class test', ->
     indexUrl.saveUrlConfig(urlConfig)
 
   it "test index-url getUrlConfig()", ->
-    url = "http://www.baidu.com/"
+    url = "http://www.baidu.com"
     urlConfig = indexUrl.getUrlConfig(url)
     console.dir urlConfig
 

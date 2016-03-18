@@ -44,7 +44,7 @@
           }
           {
             'label': 'get_url_show_url_config'
-            'command': 'generate:get_url_show_url_config'
+            'command': 'generate:get-url-show-url-config'
           }
         ]
       }

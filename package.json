@@ -18,7 +18,7 @@
       "generate:template-search",
       "generate:template-find-view",
       "generate:get-url-listurl",
-      "generate:get_url_show_url_config"
+      "generate:get-url-show-url-config"
     ]
   },
   "repository": "https://github.com/atom/generate",

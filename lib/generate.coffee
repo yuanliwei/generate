@@ -45,7 +45,7 @@ module.exports = Generate =
       'generate:json-java-db-xutils': => @genInNewPane GenMV.json_java_db_xutils
       'generate:json-java-db-ormlite': => @genInNewPane GenMV.json_java_db_ormlite
       'generate:get-url-listurl': => GetUrl.get_url_listurl()
-      'generate:get_url_show_url_config': => GetUrl.get_url_show_url_config()
+      'generate:get-url-show-url-config': => GetUrl.get_url_show_url_config()
       # 'generate:json-java': => @genInNewPane GenMV.json_java
 
     @pkgDisposables.add atom.workspace.addOpener (uriToOpen) ->

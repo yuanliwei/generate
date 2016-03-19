@@ -67,6 +67,14 @@
             'label': 'escape-Html-decode'
             'command': 'generate:escape-Html-decode'
           }
+          {
+            'label': 'escape-native2ascii'
+            'command': 'generate:escape-native2ascii'
+          }
+          {
+            'label': 'escape-ascii2native'
+            'command': 'generate:escape-ascii2native'
+          }
         ]
       }
       {

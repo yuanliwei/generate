@@ -18,6 +18,8 @@
       "generate:escape-Base64-decode",
       "generate:escape-Html-encode",
       "generate:escape-Html-decode",
+      "generate:escape-native2ascii",
+      "generate:escape-ascii2native",
       "generate:json-java",
       "generate:json-java-url",
       "generate:json-java-db-xutils",

@@ -49,6 +49,8 @@ module.exports = Generate =
       'generate:escape-Base64-decode': => Escape.escape_Base64_decode()
       'generate:escape-Html-encode': => Escape.escape_Html_encode()
       'generate:escape-Html-decode': => Escape.escape_Html_decode()
+      'generate:escape-native2ascii': => Escape.escape_native2ascii()
+      'generate:escape-ascii2native': => Escape.escape_ascii2native()
 
       'generate:json-java': => @genInNewPane GenMV.json_java
       'generate:json-java-url': => @genInNewPane GenMV.json_java_url

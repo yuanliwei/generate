@@ -38,6 +38,12 @@ exports.escape_Html_encode = ->
 exports.escape_Html_decode = ->
   transfromSel entities.decode
 
+exports.escape_native2ascii = ->
+  transfromSel native2ascii
+
+exports.escape_ascii2native = ->
+  transfromSel ascii2native
+
 encodeBase64 = (text) ->
   new Buffer(text).toString("base64")
 
@@ -47,6 +53,27 @@ decodeBase64 = (text) ->
   else
     #console.debug("Ignoring text as it contains illegal characers", text)
     text
+
+ascii2native = (ascii) ->
+  words = ascii.split '\\u'
+  native1 = words[0]
+  for code, i in words when i isnt 0
+    native1 += String.fromCharCode parseInt "0x#{code.substr 0,4}"
+    native1 += code.substr(4,code.length) if code.length > 4
+  native1
+
+native2ascii = (native_) ->
+  chars = native_.split ''
+  ascii = ''
+  for char, i in chars
+    code = Number chars[i].charCodeAt 0
+    if code > 127
+      charAscii = code.toString 16
+      charAscii = new String('0000').substr(charAscii.length,4)+charAscii;
+      ascii += '\\u'+charAscii
+    else
+      ascii += chars[i]
+  ascii
 
 transfromSel = (t) ->
   # This assumes the active pane item is an editor

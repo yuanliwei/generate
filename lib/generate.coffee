@@ -12,6 +12,7 @@ util = require './utils/util'
 StringUtil = require './utils/string-util'
 GenMV = require './gen-code/gen-m-v'
 GetUrl = require './get-url/get-url-m-v'
+Escape = require './escape/escape-m-v'
 
 module.exports = Generate =
   generateView: null
@@ -41,10 +42,19 @@ module.exports = Generate =
       'generate:template-find-view': => @createJavaConfigView()
       'generate:template-store-gen-java': => @display()
       'generate:gen-menu-command': => @genInNewPane GenMV.gen_menu_command
+
+      'generate:escape-url-encode': => Escape.escape_url_encode()
+      'generate:escape-url-decode': => Escape.escape_url_decode()
+      'generate:escape-Base64-encode': => Escape.escape_Base64_encode()
+      'generate:escape-Base64-decode': => Escape.escape_Base64_decode()
+      'generate:escape-Html-encode': => Escape.escape_Html_encode()
+      'generate:escape-Html-decode': => Escape.escape_Html_decode()
+
       'generate:json-java': => @genInNewPane GenMV.json_java
       'generate:json-java-url': => @genInNewPane GenMV.json_java_url
       'generate:json-java-db-xutils': => @genInNewPane GenMV.json_java_db_xutils
       'generate:json-java-db-ormlite': => @genInNewPane GenMV.json_java_db_ormlite
+
       'generate:get-url-listurl': => GetUrl.get_url_listurl()
       'generate:get-url-show-url-config': => GetUrl.get_url_show_url_config()
       'generate:get-url-save-config': => GetUrl.get_url_save_config()

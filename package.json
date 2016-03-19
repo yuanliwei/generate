@@ -12,6 +12,12 @@
       "generate:display",
       "generate:gen-menu-command",
       "generate:java_model",
+      "generate:escape-url-encode",
+      "generate:escape-url-decode",
+      "generate:escape-Base64-encode",
+      "generate:escape-Base64-decode",
+      "generate:escape-Html-encode",
+      "generate:escape-Html-decode",
       "generate:json-java",
       "generate:json-java-url",
       "generate:json-java-db-xutils",
@@ -40,6 +46,7 @@
     "lowdb": "0.12.5",
     "async": "1.5.2",
     "request": "2.69.0",
-    "js-beautify": "1.6.2"
+    "js-beautify": "1.6.2",
+    "html-entities": "1.2.0"
   }
 }

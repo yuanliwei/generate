@@ -41,6 +41,35 @@
         ]
       }
       {
+        'label': 'escape'
+        'submenu': [
+          {
+            'label': 'escape-url-encode'
+            'command': 'generate:escape-url-encode'
+          }
+          {
+            'label': 'escape-url-decode'
+            'command': 'generate:escape-url-decode'
+          }
+          {
+            'label': 'escape-Base64-encode'
+            'command': 'generate:escape-Base64-encode'
+          }
+          {
+            'label': 'escape-Base64-decode'
+            'command': 'generate:escape-Base64-decode'
+          }
+          {
+            'label': 'escape-Html-encode'
+            'command': 'generate:escape-Html-encode'
+          }
+          {
+            'label': 'escape-Html-decode'
+            'command': 'generate:escape-Html-decode'
+          }
+        ]
+      }
+      {
         'label': 'get-url'
         'submenu': [
           {

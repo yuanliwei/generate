@@ -39,6 +39,25 @@ exports.json_java_db_ormlite = (jsonStr) ->
   json = jsonStr
   javaSrc = json2Java.toJava json, getOpts()
 
+exports.fileds_java = (filedStr) ->
+  Fileds2Java = require './filed-java'
+  fileds2Java = new Fileds2Java()
+  fileds = filedStr
+  javaSrc = fileds2Java.toJava fileds, getOpts()
+
+exports.fileds_java_db_xutils = (filedStr) ->
+  Fileds2Java = require './filed-java-db-xutils'
+  fileds2Java = new Fileds2Java()
+  fileds = filedStr
+  javaSrc = fileds2Java.toJava fileds, getOpts()
+
+exports.fileds_java_ormlite = (filedStr) ->
+  Fileds2Java = require './filed-java-db-ormlite'
+  fileds2Java = new Fileds2Java()
+  fileds = filedStr
+  javaSrc = fileds2Java.toJava fileds, getOpts()
+
+
 genTem = """
       menus/generate.cson
       -----------------------------

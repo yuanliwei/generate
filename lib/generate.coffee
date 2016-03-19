@@ -56,6 +56,9 @@ module.exports = Generate =
       'generate:json-java-url': => @genInNewPane GenMV.json_java_url
       'generate:json-java-db-xutils': => @genInNewPane GenMV.json_java_db_xutils
       'generate:json-java-db-ormlite': => @genInNewPane GenMV.json_java_db_ormlite
+      'generate:fileds-java': => @genInNewPane GenMV.fileds_java
+      'generate:fileds-java-db-xutils': => @genInNewPane GenMV.fileds_java_db_xutils
+      'generate:fileds-java-ormlite': => @genInNewPane GenMV.fileds_java_ormlite
 
       'generate:get-url-listurl': => GetUrl.get_url_listurl()
       'generate:get-url-show-url-config': => GetUrl.get_url_show_url_config()

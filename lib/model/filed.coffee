@@ -46,7 +46,7 @@ module.exports = class Filed
         @type = item
       else
         @name = item
-    @
+    if @name.match(/^[A-Za-z0-9_]+$/)? then @ else false
 
   ###
   private String name = "value"; // this is comment

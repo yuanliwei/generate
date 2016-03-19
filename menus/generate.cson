@@ -89,20 +89,20 @@
             'command': 'generate:get-url-insert-url'
           }
           {
-            'label': 'get_url_show_url_config'
+            'label': 'get-url-show-url-config'
             'command': 'generate:get-url-show-url-config'
           }
           {
-            'label': 'get-url-save-config'
+            'label': 'get-url-save-url-config'
             'command': 'generate:get-url-save-config'
-          }
-          {
-            'label': 'get-url-request-url'
-            'command': 'generate:get-url-request-url'
           }
           {
             'label': 'get-url-request-config'
             'command': 'generate:get-url-request-config'
+          }
+          {
+            'label': 'get-url-request-url'
+            'command': 'generate:get-url-request-url'
           }
         ]
       }
@@ -129,6 +129,19 @@
           {
             'label': 'json-java-db-ormlite'
             'command': 'generate:json-java-db-ormlite'
+          }
+          { 'type': 'separator' }
+          {
+            'label': 'fileds-java'
+            'command': 'generate:fileds-java'
+          }
+          {
+            'label': 'fileds-java-db-xutils'
+            'command': 'generate:fileds-java-db-xutils'
+          }
+          {
+            'label': 'fileds-java-ormlite'
+            'command': 'generate:fileds-java-ormlite'
           }
         ]
       }

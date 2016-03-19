@@ -42,8 +42,8 @@ module.exports = class IndexUrl
     filter = {url: url}
     db1('url_config').chain().filter(filter).value()
 
-  requestUrl: (urlConfig, callback) ->
-    console.log "requestUrl"
+  requestUrlConfig: (urlConfig, callback) ->
+    console.log "requestUrlConfig"
     opts = urlConfig.opts
     queryString = qs.stringify opts.queryString
     s = '?' if queryString.length > 0
@@ -51,4 +51,9 @@ module.exports = class IndexUrl
     s = '' unless s?
     opts.url = urlConfig.url + s + queryString
     request opts, (error, response, body) ->
+      callback error, response, body
+
+  requestUrl: (url, callback) ->
+    console.log "requestUrl"
+    request url, (error, response, body) ->
       callback error, response, body

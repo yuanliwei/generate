@@ -22,7 +22,8 @@
       "generate:get-url-show-url-config",
       "generate:get-url-save-config",
       "generate:get-url-insert-url",
-      "generate:get-url-request-config"
+      "generate:get-url-request-config",
+      "generate:get-url-request-url"
     ]
   },
   "repository": "https://github.com/atom/generate",

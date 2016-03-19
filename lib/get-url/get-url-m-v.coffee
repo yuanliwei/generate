@@ -82,20 +82,44 @@ urlCfgTem = """
         """
 
 exports.get_url_request_config = ->
-    editor = atom.workspace.getActiveTextEditor()
-    return unless editor?
-    selectionText = editor.getSelectedText()
-    cfgText = selectionText.trim()
-    return if cfgText.length is 0
+  editor = atom.workspace.getActiveTextEditor()
+  return unless editor?
+  selectionText = editor.getSelectedText()
+  cfgText = selectionText.trim()
+  return if cfgText.length is 0
+  editor.moveToBottom()
+  editor.insertNewlineBelow()
+  editor.deleteToBeginningOfLine()
 
+  try
     urlConfig = JSON.parse(cfgText)
-    indexUrl.requestUrl urlConfig, (error, response, body) ->
-      editor.moveToBottom()
-      editor.insertNewlineBelow()
-      editor.deleteToBeginningOfLine()
+    indexUrl.requestUrlConfig urlConfig, (error, response, body) ->
       editor.insertText error.stack if error
-
-      # jsBeautify = require('js-beautify').js_beautify
-      # body_text = jsBeautify(body, { })
-      body_text = body
+      json = JSON.stringify response.toJSON()
+      jsBeautify = require('js-beautify').js_beautify
+      body_text = jsBeautify(json, { })
+      # console.dir response
+      # body_text = body
+      # body_text = response.toJSON()
       editor.insertText body_text
+  catch error
+    editor.insertText error.stack
+
+exports.get_url_request_url = ->
+  editor = atom.workspace.getActiveTextEditor()
+  return unless editor?
+  selectionText = editor.getSelectedText()
+  url = selectionText.trim()
+  return if url.length is 0
+  editor.moveToBottom()
+  editor.insertNewlineBelow()
+  editor.deleteToBeginningOfLine()
+  try
+    indexUrl.requestUrl url, (error, response, body) ->
+      editor.insertText error.stack if error
+      json = JSON.stringify response.toJSON()
+      jsBeautify = require('js-beautify').js_beautify
+      body_text = jsBeautify(json, { })
+      editor.insertText body_text
+  catch error
+    editor.insertText error.stack

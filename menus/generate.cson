@@ -60,6 +60,10 @@
             'command': 'generate:get-url-save-config'
           }
           {
+            'label': 'get-url-request-url'
+            'command': 'generate:get-url-request-url'
+          }
+          {
             'label': 'get-url-request-config'
             'command': 'generate:get-url-request-config'
           }

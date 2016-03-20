@@ -40,7 +40,7 @@ exports.get_url_save_config = ->
   # editor.insertNewlineBelow()
   # editor.deleteToBeginningOfLine()
   cfgText = selectionText.trim()
-  return if url.length is 0
+  return if cfgText.length is 0
 
   urlConfig = JSON.parse(cfgText)
   indexUrl.saveUrlConfig(urlConfig)

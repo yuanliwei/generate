@@ -24,6 +24,7 @@
       "generate:json-java-url",
       "generate:json-java-db-xutils",
       "generate:json-java-db-ormlite",
+      "generate:gen-style-xml",
       "generate:fileds-java",
       "generate:fileds-java-db-xutils",
       "generate:fileds-java-ormlite",
@@ -34,7 +35,8 @@
       "generate:get-url-save-config",
       "generate:get-url-insert-url",
       "generate:get-url-request-config",
-      "generate:get-url-request-url"
+      "generate:get-url-request-url",
+      "generate:get-url-request-har"
     ]
   },
   "repository": "https://github.com/atom/generate",

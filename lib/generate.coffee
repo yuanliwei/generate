@@ -59,6 +59,7 @@ module.exports = Generate =
       'generate:fileds-java': => @genInNewPane GenMV.fileds_java
       'generate:fileds-java-db-xutils': => @genInNewPane GenMV.fileds_java_db_xutils
       'generate:fileds-java-ormlite': => @genInNewPane GenMV.fileds_java_ormlite
+      'generate:gen-style-xml': => @genInNewPane GenMV.gen_style_xml
 
       'generate:get-url-listurl': => GetUrl.get_url_listurl()
       'generate:get-url-show-url-config': => GetUrl.get_url_show_url_config()
@@ -66,6 +67,7 @@ module.exports = Generate =
       'generate:get-url-insert-url': => GetUrl.get_url_insert_url()
       'generate:get-url-request-config': => GetUrl.get_url_request_config()
       'generate:get-url-request-url': => GetUrl.get_url_request_url()
+      'generate:get-url-request-har': => GetUrl.get_url_request_har()
       # 'generate:json-java': => @genInNewPane GenMV.json_java
 
     @pkgDisposables.add atom.workspace.addOpener (uriToOpen) ->

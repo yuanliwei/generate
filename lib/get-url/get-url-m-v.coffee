@@ -94,14 +94,15 @@ exports.get_url_request_config = ->
   try
     urlConfig = JSON.parse(cfgText)
     indexUrl.requestUrlConfig urlConfig, (error, response, body) ->
-      editor.insertText error.stack if error
-      json = JSON.stringify response.toJSON()
-      jsBeautify = require('js-beautify').js_beautify
-      body_text = jsBeautify(json, { })
-      # console.dir response
-      # body_text = body
-      # body_text = response.toJSON()
-      editor.insertText body_text
+      if error then editor.insertText error.stack
+      else
+        json = JSON.stringify response.toJSON()
+        jsBeautify = require('js-beautify').js_beautify
+        body_text = jsBeautify(json, { })
+        # console.dir response
+        # body_text = body
+        # body_text = response.toJSON()
+        editor.insertText body_text
   catch error
     editor.insertText error.stack
 
@@ -116,10 +117,33 @@ exports.get_url_request_url = ->
   editor.deleteToBeginningOfLine()
   try
     indexUrl.requestUrl url, (error, response, body) ->
-      editor.insertText error.stack if error
-      json = JSON.stringify response.toJSON()
-      jsBeautify = require('js-beautify').js_beautify
-      body_text = jsBeautify(json, { })
-      editor.insertText body_text
+      if error then editor.insertText error.stack
+      else
+        json = JSON.stringify response.toJSON()
+        jsBeautify = require('js-beautify').js_beautify
+        body_text = jsBeautify(json, { })
+        editor.insertText body_text
+  catch error
+    editor.insertText error.stack
+
+exports.get_url_request_har = ->
+  editor = atom.workspace.getActiveTextEditor()
+  return unless editor?
+  selectionText = editor.getSelectedText()
+  har = selectionText.trim()
+  return if har.length is 0
+  editor.moveToBottom()
+  editor.insertNewlineBelow()
+  editor.deleteToBeginningOfLine()
+  try
+    harObj = JSON.parse har
+    indexUrl.requestHar harObj, (error, response, body) ->
+      if error
+        editor.insertText error.stack
+      else
+        json = JSON.stringify response.toJSON()
+        jsBeautify = require('js-beautify').js_beautify
+        body_text = jsBeautify(json, { })
+        editor.insertText body_text
   catch error
     editor.insertText error.stack

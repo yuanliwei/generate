@@ -82,3 +82,18 @@ exports.gen_menu_command = (selectionText) ->
     method: selectionText
   }
   genTem.format(rep)
+
+exports.gen_style_xml = (selectionText) ->
+  lines = selectionText.trim().split /\n/g
+  return "lines is null" unless lines?.length > 0
+  arr = []
+  tem = '<item name="{0}">{1}</item>'
+  lines.forEach (item) ->
+    ss = item.split '='
+    if ss.length is 2
+      name = ss[0].trim()
+      value = ss[1].trim()
+      value = value.replace /^"(.*)"$/, (match, first) ->
+        first
+      arr.push tem.format name, value
+  arr.join '\n'

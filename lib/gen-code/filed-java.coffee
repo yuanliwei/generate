@@ -41,7 +41,6 @@ module.exports = class Fileds2Java
     model.package = @packageName
 
     fileds = filedStr.trim().split /\n/g
-    console.dir fileds
     return "fileds is null" unless fileds?.length > 0
 
     fileds.forEach (item) ->

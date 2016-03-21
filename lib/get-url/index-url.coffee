@@ -57,3 +57,8 @@ module.exports = class IndexUrl
     console.log "requestUrl"
     request url, (error, response, body) ->
       callback error, response, body
+
+  requestHar: (har, callback) ->
+    console.log "requestHar"
+    request {har : har}, (error, response, body) ->
+      callback error, response, body

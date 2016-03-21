@@ -104,6 +104,10 @@
             'label': 'get-url-request-url'
             'command': 'generate:get-url-request-url'
           }
+          {
+            'label': 'get-url-request-har'
+            'command': 'generate:get-url-request-har'
+          }
         ]
       }
       {
@@ -142,6 +146,10 @@
           {
             'label': 'fileds-java-ormlite'
             'command': 'generate:fileds-java-ormlite'
+          }
+          {
+            'label': 'gen-style-xml'
+            'command': 'generate:gen-style-xml'
           }
         ]
       }

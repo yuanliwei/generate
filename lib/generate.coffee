@@ -68,6 +68,8 @@ module.exports = Generate =
       'generate:get-url-request-config': => GetUrl.get_url_request_config()
       'generate:get-url-request-url': => GetUrl.get_url_request_url()
       'generate:get-url-request-har': => GetUrl.get_url_request_har()
+      'generate:get-url-store-cookies': => GetUrl.get_url_store_cookies()
+
       # 'generate:json-java': => @genInNewPane GenMV.json_java
 
     @pkgDisposables.add atom.workspace.addOpener (uriToOpen) ->

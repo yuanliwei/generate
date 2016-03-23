@@ -1,4 +1,6 @@
-config = require('../config').config
+Config = require '../config'
+config = Config.config
+
 IndexUrl = require './index-url'
 indexUrl = new IndexUrl()
 
@@ -93,6 +95,7 @@ exports.get_url_request_config = ->
 
   try
     urlConfig = JSON.parse(cfgText)
+    addCookies(urlConfig)
     indexUrl.requestUrlConfig urlConfig, (error, response, body) ->
       if error then editor.insertText error.stack
       else
@@ -147,3 +150,16 @@ exports.get_url_request_har = ->
         editor.insertText body_text
   catch error
     editor.insertText error.stack
+
+exports.get_url_store_cookies = ->
+  editor = atom.workspace.getActiveTextEditor()
+  return unless editor?
+  selectionText = editor.getSelectedText()
+  cookies = selectionText.trim()
+  return if cookies.length is 0
+  config.get_url.cookies = cookies
+  Config.saveConfig()
+
+addCookies = (urlConfig)->
+  if config.get_url.cookies? and not urlConfig.opts.headers.Cookie?
+    urlConfig.opts.headers.Cookie = config.get_url.cookies

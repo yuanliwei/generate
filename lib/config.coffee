@@ -14,6 +14,7 @@ class Config
     fs.writeFileSync(@configPath, '') unless fs.existsSync @configPath
     @config = ini.parse(fs.readFileSync(@configPath, 'utf-8'))
     @config.gen_java = {} unless @config.gen_java?
+    @config.get_url = {} unless @config.get_url?
   saveConfig: ->
     fs.writeFileSync(@configPath, ini.stringify(@config))
 

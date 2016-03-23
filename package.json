@@ -36,7 +36,8 @@
       "generate:get-url-insert-url",
       "generate:get-url-request-config",
       "generate:get-url-request-url",
-      "generate:get-url-request-har"
+      "generate:get-url-request-har",
+      "generate:get-url-store-cookies"
     ]
   },
   "repository": "https://github.com/atom/generate",

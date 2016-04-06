@@ -20,6 +20,8 @@
       "generate:escape-Html-decode",
       "generate:escape-native2ascii",
       "generate:escape-ascii2native",
+      "generate:json-string2json",
+      "generate:json-json2string",
       "generate:json-java",
       "generate:json-java-url",
       "generate:json-java-db-xutils",

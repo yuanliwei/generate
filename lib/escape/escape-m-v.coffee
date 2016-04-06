@@ -44,6 +44,20 @@ exports.escape_native2ascii = ->
 exports.escape_ascii2native = ->
   transfromSel ascii2native
 
+exports.json_string2json = ->
+  transfromSel string2json
+
+exports.json_json2string = ->
+  transfromSel json2string
+
+string2json = (text) ->
+  text.replace /\\(.)/g, (match, char) ->
+    char
+
+json2string = (text) ->
+  body = {"body": "#{text}" }
+  JSON.stringify body.body
+
 encodeBase64 = (text) ->
   new Buffer(text).toString("base64")
 

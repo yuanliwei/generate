@@ -75,6 +75,14 @@
             'label': 'escape-ascii2native'
             'command': 'generate:escape-ascii2native'
           }
+          {
+            'label': 'json-string2json'
+            'command': 'generate:json-string2json'
+          }
+          {
+            'label': 'json-json2string'
+            'command': 'generate:json-json2string'
+          }
         ]
       }
       {

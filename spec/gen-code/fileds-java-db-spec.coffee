@@ -1,5 +1,5 @@
 Config = require '../../lib/config'
-# return if Config.runOneSpec
+return if Config.runOneSpec
 
 format = require 'string-format'
 format.extend(String.prototype)

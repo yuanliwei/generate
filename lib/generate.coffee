@@ -51,6 +51,8 @@ module.exports = Generate =
       'generate:escape-Html-decode': => Escape.escape_Html_decode()
       'generate:escape-native2ascii': => Escape.escape_native2ascii()
       'generate:escape-ascii2native': => Escape.escape_ascii2native()
+      'generate:json-string2json': => Escape.json_string2json()
+      'generate:json-json2string': => Escape.json_json2string()
 
       'generate:json-java': => @genInNewPane GenMV.json_java
       'generate:json-java-url': => @genInNewPane GenMV.json_java_url

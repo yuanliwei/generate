@@ -1,5 +1,6 @@
 Config = require '../config'
 config = Config.config
+cheerio = require 'cheerio'
 
 IndexUrl = require './index-url'
 indexUrl = new IndexUrl()
@@ -105,6 +106,11 @@ exports.get_url_request_config = ->
         # console.dir response
         # body_text = body
         # body_text = response.toJSON()
+        try
+          $ = cheerio.load body
+          editor.insertText "\n\n#{$('html').text()}\n\n"
+        catch error
+          editor.insertText "\n\n#{error.stack}\n\n"
         editor.insertText body_text
   catch error
     editor.insertText error.stack
@@ -125,6 +131,11 @@ exports.get_url_request_url = ->
         json = JSON.stringify response.toJSON()
         jsBeautify = require('js-beautify').js_beautify
         body_text = jsBeautify(json, { })
+        try
+          $ = cheerio.load body
+          editor.insertText "\n\n#{$('html').text()}\n\n"
+        catch error
+          editor.insertText "\n\n#{error.stack}\n\n"
         editor.insertText body_text
   catch error
     editor.insertText error.stack
@@ -147,6 +158,11 @@ exports.get_url_request_har = ->
         json = JSON.stringify response.toJSON()
         jsBeautify = require('js-beautify').js_beautify
         body_text = jsBeautify(json, { })
+        try
+          $ = cheerio.load body
+          editor.insertText "\n\n#{$('html').text()}\n\n"
+        catch error
+          editor.insertText "\n\n#{error.stack}\n\n"
         editor.insertText body_text
   catch error
     editor.insertText error.stack

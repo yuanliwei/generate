@@ -78,6 +78,12 @@ describe 'IndexUrl Class test', ->
       console.dir error
       console.dir response
       console.dir body
+      cheerio = require 'cheerio'
+      $ = cheerio.load body
+      console.log "$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+      console.dir $
+      console.log "$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+
 
   it "test for gen menu command", ->
     genTem = """
@@ -119,3 +125,11 @@ describe 'IndexUrl Class test', ->
       method: selectionText
     }
     console.log genTem.format(rep)
+
+  it "test for string 2 json and json 2 string", ->
+    string = "{\"result\":{\"code\":\"-1\",\"msg\":\"缺少uclassid参数,uclassid=null\"},\"data\":{}}"
+    console.log "============================================================="
+    console.dir string
+    b = {"body": "#{string}"}
+    console.dir b
+    console.log b.body

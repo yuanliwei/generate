@@ -36,6 +36,7 @@ module.exports = class Filed
     source = source.replace(';','').trim()
 
     # parse modifier type name
+    @type = false
     @modifier = 0
     items = source.split /\s+/g
     items.forEach (item) =>
@@ -46,6 +47,7 @@ module.exports = class Filed
         @type = item
       else
         @name = item
+    if not @name then return false
     if @name.match(/^[A-Za-z0-9_]+$/)? then @ else false
 
   ###

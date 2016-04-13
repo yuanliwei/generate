@@ -44,6 +44,9 @@ module.exports = class Fileds2Java
     console.dir fileds
     return "fileds is null" unless fileds?.length > 0
 
+    console.log "##########################0000"
+    console.dir DbFiled
+    console.log "##########################1111"
     fileds.forEach (item) ->
       filed = new DbFiled()
       result = filed.fromSource item
@@ -81,9 +84,13 @@ class DbFiled extends Filed
   toSource: (buffer, first) ->
     # @Id(column = "id")
     # @Column(column = "pid")
-    tem0 = '@Id(column = "{0}")'
-    tem = '@Column(column = "{0}")'
-    tem = tem0 if first
+    tem
+    if first
+      tem = '@Id(column = "{0}")'
+      if @type == 'int' or @type == 'long'
+        tem += '\n@NoAutoIncrement'
+    else
+      tem = '@Column(column = "{0}")'
     columeName = StringUtil.format @name, 4
     buffer.push tem.format columeName
     tem = '{0} {1} {2}{3};{4}'

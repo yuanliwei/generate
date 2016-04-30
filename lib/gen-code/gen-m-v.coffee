@@ -33,6 +33,12 @@ exports.json_java_db_xutils = (jsonStr) ->
   json = jsonStr
   javaSrc = json2Java.toJava json, getOpts()
 
+exports.json_java_db_xutils3 = (jsonStr) ->
+  Json2Java = require './json-java-db-xutils3'
+  json2Java = new Json2Java()
+  json = jsonStr
+  javaSrc = json2Java.toJava json, getOpts()
+
 exports.json_java_db_ormlite = (jsonStr) ->
   Json2Java = require './json-java-db-ormlite'
   json2Java = new Json2Java()
@@ -47,6 +53,12 @@ exports.fileds_java = (filedStr) ->
 
 exports.fileds_java_db_xutils = (filedStr) ->
   Fileds2Java = require './filed-java-db-xutils'
+  fileds2Java = new Fileds2Java()
+  fileds = filedStr
+  javaSrc = fileds2Java.toJava fileds, getOpts()
+
+exports.fileds_java_db_xutils3 = (filedStr) ->
+  Fileds2Java = require './filed-java-db-xutils3'
   fileds2Java = new Fileds2Java()
   fileds = filedStr
   javaSrc = fileds2Java.toJava fileds, getOpts()

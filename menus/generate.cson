@@ -143,6 +143,10 @@
             'command': 'generate:json-java-db-xutils'
           }
           {
+            'label': 'json-java-db-xutils3'
+            'command': 'generate:json-java-db-xutils3'
+          }
+          {
             'label': 'json-java-db-ormlite'
             'command': 'generate:json-java-db-ormlite'
           }
@@ -154,6 +158,10 @@
           {
             'label': 'fileds-java-db-xutils'
             'command': 'generate:fileds-java-db-xutils'
+          }
+          {
+            'label': 'fileds-java-db-xutils3'
+            'command': 'generate:fileds-java-db-xutils3'
           }
           {
             'label': 'fileds-java-ormlite'

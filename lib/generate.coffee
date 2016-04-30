@@ -58,9 +58,11 @@ module.exports = Generate =
       'generate:json-java': => @genInNewPane GenMV.json_java
       'generate:json-java-url': => @genInNewPane GenMV.json_java_url
       'generate:json-java-db-xutils': => @genInNewPane GenMV.json_java_db_xutils
+      'generate:json-java-db-xutils3': => @genInNewPane GenMV.json_java_db_xutils3()
       'generate:json-java-db-ormlite': => @genInNewPane GenMV.json_java_db_ormlite
       'generate:fileds-java': => @genInNewPane GenMV.fileds_java
       'generate:fileds-java-db-xutils': => @genInNewPane GenMV.fileds_java_db_xutils
+      'generate:fileds-java-db-xutils3': => @genInNewPane GenMV.fileds_java_db_xutils3()
       'generate:fileds-java-ormlite': => @genInNewPane GenMV.fileds_java_ormlite
       'generate:gen-style-xml': => @genInNewPane GenMV.gen_style_xml
 

@@ -8,6 +8,7 @@ JavaConfigView = require './view/java-config-view'
 {CompositeDisposable} = require 'atom'
 
 util = require './utils/util'
+CoffeeCompileEditor = require './custom-pane/coffee-compile-editor'
 
 StringUtil = require './utils/string-util'
 GenMV = require './gen-code/gen-m-v'
@@ -85,7 +86,8 @@ module.exports = Generate =
 
       return unless sourceEditor?
 
-      util.buildCoffeeCompileEditor sourceEditor
+      return new CoffeeCompileEditor {sourceEditor}
+      # util.buildCoffeeCompileEditor sourceEditor
 
 
   deactivate: ->

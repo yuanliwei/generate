@@ -24,30 +24,3 @@ module.exports =
         editor.getTextInBufferRange range
 
     return text
-
-  buildCoffeeCompileEditor: (sourceEditor) ->
-    previewEditor = atom.workspace.buildTextEditor()
-
-    previewEditor.disposables.add(
-      sourceEditor.onDidSave =>
-    )
-
-    # set editor grammar to correct language
-    # grammar = atom.grammars.selectGrammar pluginManager.getCompiledScopeByEditor(sourceEditor)
-    grammars = atom.grammars.getGrammars()
-    grammar = grammars[0]
-    grammars.forEach (gram) ->
-      grammar = gram if gram.name is "Java"
-    previewEditor.setGrammar grammar
-
-    # HACK: Override TextBuffer saveAs function
-    previewEditor.getBuffer().saveAs = ->
-
-    # HACK: Override getURI and getTitle
-    previewEditor.getTitle = -> "Generate #{sourceEditor?.getTitle() or ''}".trim()
-    previewEditor.getURI   = -> "generate://editor/#{sourceEditor.id}"
-
-    # Should never prompt to save on preview editor
-    previewEditor.shouldPromptToSave = -> false
-
-    return previewEditor

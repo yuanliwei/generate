@@ -102,11 +102,11 @@ module.exports = class Json2Java
         "String"
       when Number
         vstr = "#{jsObj}"
-        if vstr.match /^\d{1,10}$/
+        if vstr.match /^-?\d{1,10}$/
           "int"
-        else if vstr.match /^\d+$/
+        else if vstr.match /^-?\d+$/
           "long"
-        else if vstr.match /^\d+\.\d+$/
+        else if vstr.match /^-?\d+\.\d+$/
           "float"
         else
           "Number"

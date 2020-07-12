@@ -5,8 +5,8 @@ ignore: {}
 patch:
   SNYK-JS-LODASH-567746:
     - cheerio > lodash:
-        patched: '2020-05-20T12:56:41.721Z'
+        patched: '2020-05-01T04:55:25.908Z'
     - lowdb > lodash:
-        patched: '2020-05-20T12:56:41.721Z'
+        patched: '2020-05-01T04:55:25.908Z'
     - request > form-data > async > lodash:
-        patched: '2020-05-20T12:56:41.721Z'
+        patched: '2020-05-01T04:55:25.908Z'
